@@ -1,0 +1,270 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMENT
+    FIM_ESCOPO
+    FIM_EXP
+    INIC_EXP
+    INIT_ESCOPO
+    LACO_FOR
+    OP_AND
+    OP_DIF
+    OP_DIV
+    OP_ELSE
+    OP_IF
+    OP_IGUAL
+    OP_IN
+    OP_MAIOR
+    OP_MAIOR_IG
+    OP_MENOR
+    OP_MENOR_IG
+    OP_MULT
+    OP_NOT
+    OP_OR
+    OP_SOMA
+    OP_SUB
+    OP_TO
+
+Grammar
+
+Rule 0     S' -> statement
+Rule 1     statement -> IDENT DEC_TIPO tipo ATRIB valor FIM_SEN
+Rule 2     statement -> IDENT DEC_TIPO tipo ATRIB valor FIM_SEN statement
+Rule 3     ident -> IDENT
+Rule 4     tipo -> TIPO_INT
+Rule 5     tipo -> TIPO_FL
+Rule 6     tipo -> TIPO_BOOL
+Rule 7     tipo -> TIPO_STR
+Rule 8     valor -> VAL_INT_P
+Rule 9     valor -> VAL_INT_N
+Rule 10    valor -> VAL_FL_P
+Rule 11    valor -> VAL_FL_N
+Rule 12    valor -> VAL_BOOL
+Rule 13    valor -> VAL_STR
+Rule 14    valor -> VAL_NULL
+
+Terminals, with rules where they appear
+
+ATRIB                : 1 2
+COMENT               : 
+DEC_TIPO             : 1 2
+FIM_ESCOPO           : 
+FIM_EXP              : 
+FIM_SEN              : 1 2
+IDENT                : 1 2 3
+INIC_EXP             : 
+INIT_ESCOPO          : 
+LACO_FOR             : 
+OP_AND               : 
+OP_DIF               : 
+OP_DIV               : 
+OP_ELSE              : 
+OP_IF                : 
+OP_IGUAL             : 
+OP_IN                : 
+OP_MAIOR             : 
+OP_MAIOR_IG          : 
+OP_MENOR             : 
+OP_MENOR_IG          : 
+OP_MULT              : 
+OP_NOT               : 
+OP_OR                : 
+OP_SOMA              : 
+OP_SUB               : 
+OP_TO                : 
+TIPO_BOOL            : 6
+TIPO_FL              : 5
+TIPO_INT             : 4
+TIPO_STR             : 7
+VAL_BOOL             : 12
+VAL_FL_N             : 11
+VAL_FL_P             : 10
+VAL_INT_N            : 9
+VAL_INT_P            : 8
+VAL_NULL             : 14
+VAL_STR              : 13
+error                : 
+
+Nonterminals, with rules where they appear
+
+ident                : 
+statement            : 2 0
+tipo                 : 1 2
+valor                : 1 2
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . IDENT DEC_TIPO tipo ATRIB valor FIM_SEN
+    (2) statement -> . IDENT DEC_TIPO tipo ATRIB valor FIM_SEN statement
+
+    IDENT           shift and go to state 2
+
+    statement                      shift and go to state 1
+
+state 1
+
+    (0) S' -> statement .
+
+
+
+state 2
+
+    (1) statement -> IDENT . DEC_TIPO tipo ATRIB valor FIM_SEN
+    (2) statement -> IDENT . DEC_TIPO tipo ATRIB valor FIM_SEN statement
+
+    DEC_TIPO        shift and go to state 3
+
+
+state 3
+
+    (1) statement -> IDENT DEC_TIPO . tipo ATRIB valor FIM_SEN
+    (2) statement -> IDENT DEC_TIPO . tipo ATRIB valor FIM_SEN statement
+    (4) tipo -> . TIPO_INT
+    (5) tipo -> . TIPO_FL
+    (6) tipo -> . TIPO_BOOL
+    (7) tipo -> . TIPO_STR
+
+    TIPO_INT        shift and go to state 5
+    TIPO_FL         shift and go to state 6
+    TIPO_BOOL       shift and go to state 7
+    TIPO_STR        shift and go to state 8
+
+    tipo                           shift and go to state 4
+
+state 4
+
+    (1) statement -> IDENT DEC_TIPO tipo . ATRIB valor FIM_SEN
+    (2) statement -> IDENT DEC_TIPO tipo . ATRIB valor FIM_SEN statement
+
+    ATRIB           shift and go to state 9
+
+
+state 5
+
+    (4) tipo -> TIPO_INT .
+
+    ATRIB           reduce using rule 4 (tipo -> TIPO_INT .)
+
+
+state 6
+
+    (5) tipo -> TIPO_FL .
+
+    ATRIB           reduce using rule 5 (tipo -> TIPO_FL .)
+
+
+state 7
+
+    (6) tipo -> TIPO_BOOL .
+
+    ATRIB           reduce using rule 6 (tipo -> TIPO_BOOL .)
+
+
+state 8
+
+    (7) tipo -> TIPO_STR .
+
+    ATRIB           reduce using rule 7 (tipo -> TIPO_STR .)
+
+
+state 9
+
+    (1) statement -> IDENT DEC_TIPO tipo ATRIB . valor FIM_SEN
+    (2) statement -> IDENT DEC_TIPO tipo ATRIB . valor FIM_SEN statement
+    (8) valor -> . VAL_INT_P
+    (9) valor -> . VAL_INT_N
+    (10) valor -> . VAL_FL_P
+    (11) valor -> . VAL_FL_N
+    (12) valor -> . VAL_BOOL
+    (13) valor -> . VAL_STR
+    (14) valor -> . VAL_NULL
+
+    VAL_INT_P       shift and go to state 11
+    VAL_INT_N       shift and go to state 12
+    VAL_FL_P        shift and go to state 13
+    VAL_FL_N        shift and go to state 14
+    VAL_BOOL        shift and go to state 15
+    VAL_STR         shift and go to state 16
+    VAL_NULL        shift and go to state 17
+
+    valor                          shift and go to state 10
+
+state 10
+
+    (1) statement -> IDENT DEC_TIPO tipo ATRIB valor . FIM_SEN
+    (2) statement -> IDENT DEC_TIPO tipo ATRIB valor . FIM_SEN statement
+
+    FIM_SEN         shift and go to state 18
+
+
+state 11
+
+    (8) valor -> VAL_INT_P .
+
+    FIM_SEN         reduce using rule 8 (valor -> VAL_INT_P .)
+
+
+state 12
+
+    (9) valor -> VAL_INT_N .
+
+    FIM_SEN         reduce using rule 9 (valor -> VAL_INT_N .)
+
+
+state 13
+
+    (10) valor -> VAL_FL_P .
+
+    FIM_SEN         reduce using rule 10 (valor -> VAL_FL_P .)
+
+
+state 14
+
+    (11) valor -> VAL_FL_N .
+
+    FIM_SEN         reduce using rule 11 (valor -> VAL_FL_N .)
+
+
+state 15
+
+    (12) valor -> VAL_BOOL .
+
+    FIM_SEN         reduce using rule 12 (valor -> VAL_BOOL .)
+
+
+state 16
+
+    (13) valor -> VAL_STR .
+
+    FIM_SEN         reduce using rule 13 (valor -> VAL_STR .)
+
+
+state 17
+
+    (14) valor -> VAL_NULL .
+
+    FIM_SEN         reduce using rule 14 (valor -> VAL_NULL .)
+
+
+state 18
+
+    (1) statement -> IDENT DEC_TIPO tipo ATRIB valor FIM_SEN .
+    (2) statement -> IDENT DEC_TIPO tipo ATRIB valor FIM_SEN . statement
+    (1) statement -> . IDENT DEC_TIPO tipo ATRIB valor FIM_SEN
+    (2) statement -> . IDENT DEC_TIPO tipo ATRIB valor FIM_SEN statement
+
+    $end            reduce using rule 1 (statement -> IDENT DEC_TIPO tipo ATRIB valor FIM_SEN .)
+    IDENT           shift and go to state 2
+
+    statement                      shift and go to state 19
+
+state 19
+
+    (2) statement -> IDENT DEC_TIPO tipo ATRIB valor FIM_SEN statement .
+
+    $end            reduce using rule 2 (statement -> IDENT DEC_TIPO tipo ATRIB valor FIM_SEN statement .)
+
