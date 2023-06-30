@@ -199,6 +199,8 @@ tokens = (
 def p_statement(p):
     '''
     statement : IDENT DEC_TIPO tipo ATRIB valor FIM_EXP
+            | IDENT DEC_TIPO tipo ATRIB valor FIM_EXP statement
+            |
     '''
     p[0] = f"{p[1]} : {p[3]} = {p[5]} ;"
     # p[0] = {

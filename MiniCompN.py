@@ -42,7 +42,7 @@ tokens = (
     'FIM_SEN'
 )
 
-# Início Regras da Análise Léxica
+# Início Regras da Análise Léxica --------------------------------------------------------------------------------------
 
 def t_IDENT(token):
     r'@[a-zA-Z]+.[a-zA-Z0-9]*'
@@ -125,7 +125,7 @@ def t_FIM_EXP(token):
     return token
 
 # def t_COMENT(token):
-#     r'//.*'
+#     r'\#.*\#'
 #     pass
 
 def t_INIT_ESCOPO(token):
@@ -198,7 +198,6 @@ def t_OP_TO(token):
 
 def t_FIM_SEN(token):
     r';'
-    token.type = 'FIM_SEN'
     return token
 
 t_ignore = ' \t\n'
@@ -207,33 +206,46 @@ def t_error(token):
     print("Caractere ilegal: %s" % token.value[0])
     token.lexer.skip(1)
 
-# Fim Regras da Análise Léxica
+# Fim Regras da Análise Léxica -----------------------------------------------------------------------------------------
 
-# Início Regras da Análise Sintática
+# Início Regras da Análise Sintática -----------------------------------------------------------------------------------
+
+def p_programa(p):
+    '''
+        programa : statement
+        | if
+        | for
+        | atrib
+        | comentario
+        | 
+    '''
+    p[0] = p[1]
 
 def p_statement(p):
     '''
-        statement : IDENT DEC_TIPO tipo ATRIB valor FIM_SEN
-                  | IDENT DEC_TIPO tipo ATRIB valor FIM_SEN statement
+        statement : IDENT DEC_TIPO tipo ATRIB valor FIM_SEN programa
+        |
+                  
     '''
 
     if len(p) == 7:
         p[0] = {
             'tipo': p[3],
             'valor': p[5],
-            'statement': p[7]
         }
-    else:
+    elif len(p) == 6:
         p[0] = {
             'tipo': p[3],
             'valor': p[5],
         }
+    else:
+        p[0] = {}
 
-def p_ident(p):
-    '''
-    ident : IDENT
-    '''
-    p[0] = p[1]
+# def p_ident(p):
+#     '''
+#     ident : IDENT
+#     '''
+#     p[0] = p[1]
 
 def p_tipo(p):
     '''
@@ -256,6 +268,27 @@ def p_valor(p):
     '''
     p[0] = p[1]
 
+def p_if(p):
+    '''
+        if : OP_IF INIC_EXP exp FIM_EXP INIT_ESCOPO programa FIM_ESCOPO programa
+           | OP_IF INIC_EXP exp FIM_EXP INIT_ESCOPO programa FIM_ESCOPO OP_ELSE INIT_ESCOPO programa FIM_ESCOPO programa
+           |
+    '''
+    if len(p) == 9:
+        p[0] = {
+            'tipo': 'if',
+            'condicao': p[3],
+            'statement': p[6],
+        }
+    elif len(p) == 12:
+        p[0] = {
+            'tipo': 'if',
+            'condicao': p[3],
+            'statement': p[6],
+            'else': p[10],
+        }
+
+# def p_exp(p):
 
 
 def p_error(p):
@@ -266,9 +299,11 @@ def p_error(p):
 lexer = lex.lex()
 parser = yacc.yacc()
 
-lexer.input('''
-@teste : Int = 123 ; @var : Str = 2 ;
-''')
+input_text = '''
+@teste : Int = 123;
+'''
+
+lexer.input(input_text)
 
 while True:
     token = lexer.token()
@@ -276,15 +311,13 @@ while True:
         break  # Quando não houver mais tokens, saia do loop
     print(token)
 
-input_text = '''
-@teste : Int = 123; @var : Str = 2;
-
-'''
+result = parser.parse(input_text)  # Chama o parser para a linha
+print(result)  # Processa o resultado do parser
 # Dividir o texto em linhas
-lines = input_text.strip().split('\n')
-print(lines)
+# lines = input_text.strip().split('\n')
+# print(lines)
 
 # Loop de processamento das linhas
-for line in lines:
-    result = parser.parse(line)  # Chama o parser para a linha
-    print(result)  # Processa o resultado do parser
+# for line in lines:
+#     result = parser.parse(line)  # Chama o parser para a linha
+#     print(result)  # Processa o resultado do parser
