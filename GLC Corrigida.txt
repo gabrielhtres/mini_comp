@@ -33,13 +33,14 @@ q11 -> + | - | * | /
 q12 -> q1 | q2 | IDENT | q4 | q5 | q8 | q11 | q13
 q13 -> IDENT : q1 = q2 ; q13 | if (q5 q3 q4 q5 q3) { q13 } ; q13 | if (q5 q3 q4 q5 q3) { q13 } else { q13 }; q13 | for (IDENT in q6 to q6) { q13 }; q13 | IDENT = q9; q13 | # q13 # q13 | $
 q14 -> $
+
 ------------------------------------------------------------------------------------------------------- Fatorado
 
 q0 -> IDENT q0' | if (q5 q3 q4 q5 q3) { q13 } q8 | for (IDENT in q6 to q6) { q13 }; q13 | # q12 # q13
-q0' -> : q1 = q2 ; q13 | = q9; q13
+q0' -> : q1 = q2 ; q13 | = q9 ; q13 | = q10 q11 q10 ; q13
 q1 -> Int | Float | Bool | Str
 q2 -> VAL_STR | q6 | q7 | VAL_BOOL | VAL_NULL
-q3 -> q10 | VAL_BOOL | VAL_NULL
+q3 -> q10 | VAL_BOOL | VAL_NULL | VAL_STR
 q4 -> && | || | == | != | < | > | <= | >=
 q5 -> ! | $
 q6 -> VAL_INT_P | VAL_INT_N
@@ -50,5 +51,5 @@ q10 -> IDENT | q6 | q7
 q11 -> + | - | * | /
 q12 -> q1 | q2 | q3 | q4 | q5 | q8 | q9 | q10 | q11 | q13 | IDENT
 q13 -> IDENT q13' | if (q5 q3 q4 q5 q3) { q13 } q13'' | for (IDENT in q6 to q6) { q13 }; q13 | # q12 # q13 | $
-q13' -> : q1 = q2 ; q13 | = q9; q13
+q13' -> : q1 = q2 ; q13 | = q9 ; q13 | = q10 q11 q10 ; q13
 q13'' -> ; q13 | else { q13 }; q13

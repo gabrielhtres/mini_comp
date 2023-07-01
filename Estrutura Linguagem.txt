@@ -1,6 +1,6 @@
 Identificador
 
-Inicia com @, tendo obrigratóriamente uma letra como segundo caractere e podendo receber letras ou números posteiormente ou finalizar
+Inicia com @, tendo obrigatoriamente uma letra como segundo caractere e podendo receber letras ou números posteriormente ou finalizar
 
 Ex: @num, @teste123, @i
 
@@ -44,4 +44,6 @@ Comentários
 
 # ... #
 
+Caractere de fim de sentença ;
 
+Caractere que representa o fim da sequência e precisa obrigatoriamente estar presente no fim de cada sentença

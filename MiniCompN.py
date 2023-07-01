@@ -308,6 +308,7 @@ def p_q3(p):
         q3 : q10
         | VAL_BOOL
         | VAL_NULL
+        | VAL_STR
     '''
     p[0] = f"{p[1]}"
 
