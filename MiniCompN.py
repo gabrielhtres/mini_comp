@@ -1,6 +1,8 @@
 import ply.lex as lex
 import ply.yacc as yacc
 
+linha = 1
+
 tokens = (
     'IDENT',
     'TIPO_STR',
@@ -200,11 +202,16 @@ def t_FIM_SEN(token):
     r';'
     return token
 
-t_ignore = ' \t\n'
+t_ignore = ' \t'
 
 def t_error(token):
-    print("Caractere ilegal: %s" % token.value[0])
-    token.lexer.skip(1)
+    global linha
+    if (token.value[0] == '\n'):
+        linha = linha + 1
+        token.lexer.skip(1)
+    else:
+        print("Caractere ilegal: %s" % token.value[0])
+        token.lexer.skip(1)
 
 # Fim Regras da Análise Léxica -----------------------------------------------------------------------------------------
 
@@ -217,13 +224,26 @@ def p_q0(p):
         | LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
         | COMENT q12 COMENT q13
     '''
-    # p[0] = p[1]
+    if len(p) == 3:
+        p[0] = f"Encontrado: {p[1]} {p[2] != None and p[2] or ''}"
+    elif len(p) == 13:
+        
+        p[0] = f"Encontrado: {p[1]} {p[2]} {p[3] != None and p[3] or ''} {p[4]} {p[5]} {p[6] != None and p[6] or ''} {p[7]} {p[8]} {p[9]} {p[10] != None and p[10] or ''} {p[11]} {p[12] != None and p[12] or ''}"
+    elif len(p) == 14:
+        print('entrou aq')
+        p[0] = f"Encontrado: {p[1]} {p[2]} {p[3]} {p[4]} {p[5]} {p[6] } {p[7]} {p[8]} {p[9]} {p[10] != None and p[6] or ''} {p[11]} {p[12]} {p[13] != None and p[13] or ''}"
+    elif len(p) == 5:
+        p[0] = f"Encontrado: {p[1]} {p[2] != None and p[2] or ''} {p[3]} {p[4] != None and p[4] or ''}"
 
 def p_q0l(p):
     '''
         q0l : DEC_TIPO q1 ATRIB q2 FIM_SEN q13
         | ATRIB q9 FIM_SEN q13
     '''
+    if len(p) == 7:
+        p[0] = f"{p[1]} {p[2]} {p[3]} {p[4]} {p[5]} {p[6]}"
+    elif len(p) == 5:
+        p[0] = f"{p[1]} {p[2]} {p[3]} {p[4]}"
 
 def p_q13(p):
     '''
@@ -233,18 +253,36 @@ def p_q13(p):
         | COMENT q12 COMENT q13
         |
     '''
+    if len(p) == 3:
+        p[0] = f"{p[1]} {p[2]}"
+    elif len(p) == 13:
+        p[0] = f"{p[1]} {p[2]} {p[3] != None and p[3] or ''} {p[4]} {p[5]} {p[6] != None and p[6] or ''} {p[7]} {p[8]} {p[9]} {p[10] != None and p[10] or ''} {p[11]} {p[12] != None and p[12] or ''}"
+    elif len(p) == 14:
+        p[0] = f"{p[1]} {p[2]} {p[3]} {p[4]} {p[5]} {p[6]} {p[7]} {p[8]} {p[9]} {p[10] != None and p[10] or ''} {p[11]} {p[12]} {p[13] != None and p[13] or ''}"
+    elif len(p) == 5:
+        p[0] = f"{p[1]} {p[2] != None and p[2] or ''} {p[3]} {p[4] != None and p[4] or ''}"
+    elif len(p) == 1:
+        p[0] = f""
 
 def p_q13l(p):
     '''
         q13l : DEC_TIPO q1 ATRIB q2 FIM_SEN q13
         | ATRIB q9 FIM_SEN q13
     '''
+    if len(p) == 7:
+        p[0] = f"{p[1]} {p[2]} {p[3]} {p[4]} {p[5]} {p[6]}"
+    elif len(p) == 5:
+        p[0] = f"{p[1]} {p[2]} {p[3]} {p[4]}"
 
 def p_q13ll(p):
     '''
         q13ll : FIM_SEN q13
         | OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
     '''
+    if len(p) == 3:
+        p[0] = f"{p[1]} {p[2] != None and p[2] or ''}"
+    elif len(p) == 7:
+        p[0] = f"{p[1]} {p[2]} {p[3] != None and p[3] or ''} {p[4]} {p[5]} {p[6] != None and p[6] or ''}"
 
 def p_q1(p):
     '''
@@ -253,6 +291,7 @@ def p_q1(p):
         | TIPO_STR
         | TIPO_BOOL
     '''
+    p[0] = f"{p[1]}"
 
 def p_q2(p):
     '''
@@ -262,6 +301,7 @@ def p_q2(p):
         | VAL_BOOL
         | VAL_NULL
     '''
+    p[0] = f"{p[1]}"
 
 def p_q3(p):
     '''
@@ -269,6 +309,7 @@ def p_q3(p):
         | VAL_BOOL
         | VAL_NULL
     '''
+    p[0] = f"{p[1]}"
 
 def p_q4(p):
     '''
@@ -281,36 +322,51 @@ def p_q4(p):
         | OP_MAIOR_IG
         | OP_MENOR_IG
     '''
+    p[0] = f"{p[1]}"
 
 def p_q5(p):
     '''
         q5 : OP_NOT
         |
     '''
+    if len(p) == 2:
+        p[0] = f"{p[1]}"
+    elif len(p) == 1:
+        p[0] = f""
 
 def p_q7(p):
     '''
         q7 : VAL_FL_P
         | VAL_FL_N
     '''
+    p[0] = f"{p[1]}"
 
 def p_q6(p):
     '''
         q6 : VAL_INT_P
         | VAL_INT_N
     '''
+    p[0] = f"{p[1]}"
 
 def p_q8(p):
     '''
         q8 : FIM_SEN q13
         | OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO q13
     '''
+    if len(p) == 3:
+        p[0] = f"{p[1]} {p[2] != None and p[2] or ''}"
+    elif len(p) == 6:
+        p[0] = f"{p[1]} {p[2]} {p[3] != None and p[3] or ''} {p[4]} {p[5] != None and p[5] or ''}"
 
 def p_q9(p):
     '''
         q9 : q3
         | q10 q11 q10
     '''
+    if len(p) == 2:
+        p[0] = f"{p[1]}"
+    elif len(p) == 4:
+        p[0] = f"{p[1]} {p[2]} {p[3]}"
 
 def p_q10(p):
     '''
@@ -318,6 +374,7 @@ def p_q10(p):
         | q6
         | q7
     '''
+    p[0] = f"{p[1]}"
 
 def p_q11(p):
     '''
@@ -326,6 +383,7 @@ def p_q11(p):
         | OP_MULT
         | OP_DIV
     '''
+    p[0] = f"{p[1]}"
 
 def p_q12(p):
     '''
@@ -339,9 +397,10 @@ def p_q12(p):
         | q13
         | IDENT
     '''
+    p[0] = f"{p[1]}"
 
 def p_error(p):
-    print("Erro de sintaxe", p)
+    print("Caractere inesperado identificado na linha " + str(p.lineno) + " e na posição " + str(p.lexpos) + " com o valor " + str(p.value) + " e o tipo " + str(p.type) + ".")
 
 # Fim Regras da Análise Sintática
 
@@ -349,24 +408,25 @@ lexer = lex.lex()
 parser = yacc.yacc()
 
 input_text = '''
-@teste : Int = 123;
-@teste2 : Float = 123.123;
-for (@var = 1 to 10) {
     if (@var == 5) {
-    
+        for (@i = 0 to 10) {
+            @var = @var + 1;
+        }
     };
-};
-# @teste #
+
 '''
 
 lexer.input(input_text)
 
-while True:
-    token = lexer.token()
-    if not token:
-        break  # Quando não houver mais tokens, saia do loop
-    print("Encontrado: " + token.type + " com o lexema " + str(token.value) + " na posição " + str(token.lexpos)) 
-    #
 
-result = parser.parse(input_text)  # Chama o parser para a linha
-print(result)  # Processa o resultado do parser
+print("\n\n\n---------- Início Análise Léxica ----------\n")
+while True:
+    token = lexer.token()     
+    if not token:
+        break 
+    print("Encontrado: " + token.type + " com o lexema " + str(token.value) + " na linha " + str(linha) + " e na posição " + str(token.lexpos)) 
+print("\n---------- Fim Análise Léxica ----------\n\n\n")
+
+print("---------- Início Análise Sintática ----------\n")
+result = parser.parse(input_text)
+print("\n---------- Fim Análise Léxica ----------\n\n\n")
