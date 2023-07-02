@@ -39,7 +39,6 @@ tokens = (
     'OP_MAIOR_IG',
     'OP_MENOR_IG',
     'OP_NOT',
-    'OP_IN',
     'OP_TO',
     'FIM_SEN'
 )
@@ -190,10 +189,6 @@ def t_OP_NOT(token):
     r'!'
     return token
 
-def t_OP_IN(token):
-    r'in'
-    return token
-
 def t_OP_TO(token):
     r'to'
     return token
@@ -239,6 +234,8 @@ def p_q0l(p):
     '''
         q0l : DEC_TIPO q1 ATRIB q2 FIM_SEN q13
         | ATRIB q9 FIM_SEN q13
+        | ATRIB q10 q11 q10 FIM_SEN q13
+
     '''
     if len(p) == 7:
         p[0] = f"{p[1]} {p[2]} {p[3]} {p[4]} {p[5]} {p[6]}"
@@ -268,6 +265,7 @@ def p_q13l(p):
     '''
         q13l : DEC_TIPO q1 ATRIB q2 FIM_SEN q13
         | ATRIB q9 FIM_SEN q13
+        | ATRIB q10 q11 q10 FIM_SEN q13
     '''
     if len(p) == 7:
         p[0] = f"{p[1]} {p[2]} {p[3]} {p[4]} {p[5]} {p[6]}"
@@ -412,7 +410,7 @@ input_text = '''
     if (@var == 5) {
         for (@i = 0 to 10) {
             @var = @var + 1;
-        }
+        };
     };
 
 '''
@@ -430,4 +428,5 @@ print("\n---------- Fim Análise Léxica ----------\n\n\n")
 
 print("---------- Início Análise Sintática ----------\n")
 result = parser.parse(input_text)
+print(result)
 print("\n---------- Fim Análise Léxica ----------\n\n\n")

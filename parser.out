@@ -1,1 +1,2345 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> q0
+Rule 1     q0 -> IDENT q0l
+Rule 2     q0 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q8
+Rule 3     q0 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+Rule 4     q0 -> COMENT q12 COMENT q13
+Rule 5     q0l -> DEC_TIPO q1 ATRIB q2 FIM_SEN q13
+Rule 6     q0l -> ATRIB q9 FIM_SEN q13
+Rule 7     q0l -> ATRIB q10 q11 q10 FIM_SEN q13
+Rule 8     q13 -> IDENT q13l
+Rule 9     q13 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+Rule 10    q13 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+Rule 11    q13 -> COMENT q12 COMENT q13
+Rule 12    q13 -> <empty>
+Rule 13    q13l -> DEC_TIPO q1 ATRIB q2 FIM_SEN q13
+Rule 14    q13l -> ATRIB q9 FIM_SEN q13
+Rule 15    q13l -> ATRIB q10 q11 q10 FIM_SEN q13
+Rule 16    q13ll -> FIM_SEN q13
+Rule 17    q13ll -> OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+Rule 18    q1 -> TIPO_INT
+Rule 19    q1 -> TIPO_FL
+Rule 20    q1 -> TIPO_STR
+Rule 21    q1 -> TIPO_BOOL
+Rule 22    q2 -> VAL_STR
+Rule 23    q2 -> q6
+Rule 24    q2 -> q7
+Rule 25    q2 -> VAL_BOOL
+Rule 26    q2 -> VAL_NULL
+Rule 27    q3 -> q10
+Rule 28    q3 -> VAL_BOOL
+Rule 29    q3 -> VAL_NULL
+Rule 30    q3 -> VAL_STR
+Rule 31    q4 -> OP_AND
+Rule 32    q4 -> OP_OR
+Rule 33    q4 -> OP_IGUAL
+Rule 34    q4 -> OP_DIF
+Rule 35    q4 -> OP_MAIOR
+Rule 36    q4 -> OP_MENOR
+Rule 37    q4 -> OP_MAIOR_IG
+Rule 38    q4 -> OP_MENOR_IG
+Rule 39    q5 -> OP_NOT
+Rule 40    q5 -> <empty>
+Rule 41    q7 -> VAL_FL_P
+Rule 42    q7 -> VAL_FL_N
+Rule 43    q6 -> VAL_INT_P
+Rule 44    q6 -> VAL_INT_N
+Rule 45    q8 -> FIM_SEN q13
+Rule 46    q8 -> OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO q13
+Rule 47    q9 -> q3
+Rule 48    q9 -> q10 q11 q10
+Rule 49    q10 -> IDENT
+Rule 50    q10 -> q6
+Rule 51    q10 -> q7
+Rule 52    q11 -> OP_SOMA
+Rule 53    q11 -> OP_SUB
+Rule 54    q11 -> OP_MULT
+Rule 55    q11 -> OP_DIV
+Rule 56    q12 -> q1
+Rule 57    q12 -> q2
+Rule 58    q12 -> q3
+Rule 59    q12 -> q4
+Rule 60    q12 -> q5
+Rule 61    q12 -> q8
+Rule 62    q12 -> q11
+Rule 63    q12 -> q13
+Rule 64    q12 -> IDENT
+
+Terminals, with rules where they appear
+
+ATRIB                : 3 5 6 7 10 13 14 15
+COMENT               : 4 4 11 11
+DEC_TIPO             : 5 13
+FIM_ESCOPO           : 2 3 9 10 17 46
+FIM_EXP              : 2 3 9 10
+FIM_SEN              : 3 5 6 7 10 13 14 15 16 17 45
+IDENT                : 1 3 8 10 49 64
+INIT_ESCOPO          : 2 3 9 10 17 46
+INIT_EXP             : 2 3 9 10
+LACO_FOR             : 3 10
+OP_AND               : 31
+OP_DIF               : 34
+OP_DIV               : 55
+OP_ELSE              : 17 46
+OP_IF                : 2 9
+OP_IGUAL             : 33
+OP_MAIOR             : 35
+OP_MAIOR_IG          : 37
+OP_MENOR             : 36
+OP_MENOR_IG          : 38
+OP_MULT              : 54
+OP_NOT               : 39
+OP_OR                : 32
+OP_SOMA              : 52
+OP_SUB               : 53
+OP_TO                : 3 10
+TIPO_BOOL            : 21
+TIPO_FL              : 19
+TIPO_INT             : 18
+TIPO_STR             : 20
+VAL_BOOL             : 25 28
+VAL_FL_N             : 42
+VAL_FL_P             : 41
+VAL_INT_N            : 44
+VAL_INT_P            : 43
+VAL_NULL             : 26 29
+VAL_STR              : 22 30
+error                : 
+
+Nonterminals, with rules where they appear
+
+q0                   : 0
+q0l                  : 1
+q1                   : 5 13 56
+q10                  : 7 7 15 15 27 48 48
+q11                  : 7 15 48 62
+q12                  : 4 11
+q13                  : 2 3 3 4 5 6 7 9 10 10 11 13 14 15 16 17 17 45 46 46 63
+q13l                 : 8
+q13ll                : 9
+q2                   : 5 13 57
+q3                   : 2 2 9 9 47 58
+q4                   : 2 9 59
+q5                   : 2 2 9 9 60
+q6                   : 3 3 10 10 23 50
+q7                   : 24 51
+q8                   : 2 61
+q9                   : 6 14
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . q0
+    (1) q0 -> . IDENT q0l
+    (2) q0 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q8
+    (3) q0 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (4) q0 -> . COMENT q12 COMENT q13
+
+    IDENT           shift and go to state 2
+    OP_IF           shift and go to state 3
+    LACO_FOR        shift and go to state 4
+    COMENT          shift and go to state 5
+
+    q0                             shift and go to state 1
+
+state 1
+
+    (0) S' -> q0 .
+
+
+
+state 2
+
+    (1) q0 -> IDENT . q0l
+    (5) q0l -> . DEC_TIPO q1 ATRIB q2 FIM_SEN q13
+    (6) q0l -> . ATRIB q9 FIM_SEN q13
+    (7) q0l -> . ATRIB q10 q11 q10 FIM_SEN q13
+
+    DEC_TIPO        shift and go to state 7
+    ATRIB           shift and go to state 8
+
+    q0l                            shift and go to state 6
+
+state 3
+
+    (2) q0 -> OP_IF . INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q8
+
+    INIT_EXP        shift and go to state 9
+
+
+state 4
+
+    (3) q0 -> LACO_FOR . INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+
+    INIT_EXP        shift and go to state 10
+
+
+state 5
+
+    (4) q0 -> COMENT . q12 COMENT q13
+    (56) q12 -> . q1
+    (57) q12 -> . q2
+    (58) q12 -> . q3
+    (59) q12 -> . q4
+    (60) q12 -> . q5
+    (61) q12 -> . q8
+    (62) q12 -> . q11
+    (63) q12 -> . q13
+    (64) q12 -> . IDENT
+    (18) q1 -> . TIPO_INT
+    (19) q1 -> . TIPO_FL
+    (20) q1 -> . TIPO_STR
+    (21) q1 -> . TIPO_BOOL
+    (22) q2 -> . VAL_STR
+    (23) q2 -> . q6
+    (24) q2 -> . q7
+    (25) q2 -> . VAL_BOOL
+    (26) q2 -> . VAL_NULL
+    (27) q3 -> . q10
+    (28) q3 -> . VAL_BOOL
+    (29) q3 -> . VAL_NULL
+    (30) q3 -> . VAL_STR
+    (31) q4 -> . OP_AND
+    (32) q4 -> . OP_OR
+    (33) q4 -> . OP_IGUAL
+    (34) q4 -> . OP_DIF
+    (35) q4 -> . OP_MAIOR
+    (36) q4 -> . OP_MENOR
+    (37) q4 -> . OP_MAIOR_IG
+    (38) q4 -> . OP_MENOR_IG
+    (39) q5 -> . OP_NOT
+    (40) q5 -> .
+    (45) q8 -> . FIM_SEN q13
+    (46) q8 -> . OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO q13
+    (52) q11 -> . OP_SOMA
+    (53) q11 -> . OP_SUB
+    (54) q11 -> . OP_MULT
+    (55) q11 -> . OP_DIV
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+    (43) q6 -> . VAL_INT_P
+    (44) q6 -> . VAL_INT_N
+    (41) q7 -> . VAL_FL_P
+    (42) q7 -> . VAL_FL_N
+    (49) q10 -> . IDENT
+    (50) q10 -> . q6
+    (51) q10 -> . q7
+
+  ! shift/reduce conflict for COMENT resolved as shift
+  ! shift/reduce conflict for COMENT resolved as shift
+    IDENT           shift and go to state 21
+    TIPO_INT        shift and go to state 22
+    TIPO_FL         shift and go to state 23
+    TIPO_STR        shift and go to state 24
+    TIPO_BOOL       shift and go to state 25
+    VAL_STR         shift and go to state 26
+    VAL_BOOL        shift and go to state 29
+    VAL_NULL        shift and go to state 30
+    OP_AND          shift and go to state 32
+    OP_OR           shift and go to state 33
+    OP_IGUAL        shift and go to state 34
+    OP_DIF          shift and go to state 35
+    OP_MAIOR        shift and go to state 36
+    OP_MENOR        shift and go to state 37
+    OP_MAIOR_IG     shift and go to state 38
+    OP_MENOR_IG     shift and go to state 39
+    OP_NOT          shift and go to state 40
+    FIM_SEN         shift and go to state 41
+    OP_ELSE         shift and go to state 42
+    OP_SOMA         shift and go to state 43
+    OP_SUB          shift and go to state 44
+    OP_MULT         shift and go to state 45
+    OP_DIV          shift and go to state 46
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    VAL_INT_P       shift and go to state 49
+    VAL_INT_N       shift and go to state 50
+    VAL_FL_P        shift and go to state 51
+    VAL_FL_N        shift and go to state 52
+
+  ! COMENT          [ reduce using rule 40 (q5 -> .) ]
+  ! COMENT          [ reduce using rule 12 (q13 -> .) ]
+
+    q12                            shift and go to state 12
+    q13                            shift and go to state 13
+    q1                             shift and go to state 14
+    q2                             shift and go to state 15
+    q3                             shift and go to state 16
+    q4                             shift and go to state 17
+    q5                             shift and go to state 18
+    q8                             shift and go to state 19
+    q11                            shift and go to state 20
+    q6                             shift and go to state 27
+    q7                             shift and go to state 28
+    q10                            shift and go to state 31
+
+state 6
+
+    (1) q0 -> IDENT q0l .
+
+    $end            reduce using rule 1 (q0 -> IDENT q0l .)
+
+
+state 7
+
+    (5) q0l -> DEC_TIPO . q1 ATRIB q2 FIM_SEN q13
+    (18) q1 -> . TIPO_INT
+    (19) q1 -> . TIPO_FL
+    (20) q1 -> . TIPO_STR
+    (21) q1 -> . TIPO_BOOL
+
+    TIPO_INT        shift and go to state 22
+    TIPO_FL         shift and go to state 23
+    TIPO_STR        shift and go to state 24
+    TIPO_BOOL       shift and go to state 25
+
+    q1                             shift and go to state 53
+
+state 8
+
+    (6) q0l -> ATRIB . q9 FIM_SEN q13
+    (7) q0l -> ATRIB . q10 q11 q10 FIM_SEN q13
+    (47) q9 -> . q3
+    (48) q9 -> . q10 q11 q10
+    (49) q10 -> . IDENT
+    (50) q10 -> . q6
+    (51) q10 -> . q7
+    (27) q3 -> . q10
+    (28) q3 -> . VAL_BOOL
+    (29) q3 -> . VAL_NULL
+    (30) q3 -> . VAL_STR
+    (43) q6 -> . VAL_INT_P
+    (44) q6 -> . VAL_INT_N
+    (41) q7 -> . VAL_FL_P
+    (42) q7 -> . VAL_FL_N
+
+    IDENT           shift and go to state 57
+    VAL_BOOL        shift and go to state 60
+    VAL_NULL        shift and go to state 61
+    VAL_STR         shift and go to state 62
+    VAL_INT_P       shift and go to state 49
+    VAL_INT_N       shift and go to state 50
+    VAL_FL_P        shift and go to state 51
+    VAL_FL_N        shift and go to state 52
+
+    q9                             shift and go to state 54
+    q10                            shift and go to state 55
+    q3                             shift and go to state 56
+    q6                             shift and go to state 58
+    q7                             shift and go to state 59
+
+state 9
+
+    (2) q0 -> OP_IF INIT_EXP . q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q8
+    (39) q5 -> . OP_NOT
+    (40) q5 -> .
+
+    OP_NOT          shift and go to state 40
+    VAL_BOOL        reduce using rule 40 (q5 -> .)
+    VAL_NULL        reduce using rule 40 (q5 -> .)
+    VAL_STR         reduce using rule 40 (q5 -> .)
+    IDENT           reduce using rule 40 (q5 -> .)
+    VAL_INT_P       reduce using rule 40 (q5 -> .)
+    VAL_INT_N       reduce using rule 40 (q5 -> .)
+    VAL_FL_P        reduce using rule 40 (q5 -> .)
+    VAL_FL_N        reduce using rule 40 (q5 -> .)
+
+    q5                             shift and go to state 63
+
+state 10
+
+    (3) q0 -> LACO_FOR INIT_EXP . IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+
+    IDENT           shift and go to state 64
+
+
+state 11
+
+    (11) q13 -> COMENT . q12 COMENT q13
+    (56) q12 -> . q1
+    (57) q12 -> . q2
+    (58) q12 -> . q3
+    (59) q12 -> . q4
+    (60) q12 -> . q5
+    (61) q12 -> . q8
+    (62) q12 -> . q11
+    (63) q12 -> . q13
+    (64) q12 -> . IDENT
+    (18) q1 -> . TIPO_INT
+    (19) q1 -> . TIPO_FL
+    (20) q1 -> . TIPO_STR
+    (21) q1 -> . TIPO_BOOL
+    (22) q2 -> . VAL_STR
+    (23) q2 -> . q6
+    (24) q2 -> . q7
+    (25) q2 -> . VAL_BOOL
+    (26) q2 -> . VAL_NULL
+    (27) q3 -> . q10
+    (28) q3 -> . VAL_BOOL
+    (29) q3 -> . VAL_NULL
+    (30) q3 -> . VAL_STR
+    (31) q4 -> . OP_AND
+    (32) q4 -> . OP_OR
+    (33) q4 -> . OP_IGUAL
+    (34) q4 -> . OP_DIF
+    (35) q4 -> . OP_MAIOR
+    (36) q4 -> . OP_MENOR
+    (37) q4 -> . OP_MAIOR_IG
+    (38) q4 -> . OP_MENOR_IG
+    (39) q5 -> . OP_NOT
+    (40) q5 -> .
+    (45) q8 -> . FIM_SEN q13
+    (46) q8 -> . OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO q13
+    (52) q11 -> . OP_SOMA
+    (53) q11 -> . OP_SUB
+    (54) q11 -> . OP_MULT
+    (55) q11 -> . OP_DIV
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+    (43) q6 -> . VAL_INT_P
+    (44) q6 -> . VAL_INT_N
+    (41) q7 -> . VAL_FL_P
+    (42) q7 -> . VAL_FL_N
+    (49) q10 -> . IDENT
+    (50) q10 -> . q6
+    (51) q10 -> . q7
+
+  ! shift/reduce conflict for COMENT resolved as shift
+  ! shift/reduce conflict for COMENT resolved as shift
+    IDENT           shift and go to state 21
+    TIPO_INT        shift and go to state 22
+    TIPO_FL         shift and go to state 23
+    TIPO_STR        shift and go to state 24
+    TIPO_BOOL       shift and go to state 25
+    VAL_STR         shift and go to state 26
+    VAL_BOOL        shift and go to state 29
+    VAL_NULL        shift and go to state 30
+    OP_AND          shift and go to state 32
+    OP_OR           shift and go to state 33
+    OP_IGUAL        shift and go to state 34
+    OP_DIF          shift and go to state 35
+    OP_MAIOR        shift and go to state 36
+    OP_MENOR        shift and go to state 37
+    OP_MAIOR_IG     shift and go to state 38
+    OP_MENOR_IG     shift and go to state 39
+    OP_NOT          shift and go to state 40
+    FIM_SEN         shift and go to state 41
+    OP_ELSE         shift and go to state 42
+    OP_SOMA         shift and go to state 43
+    OP_SUB          shift and go to state 44
+    OP_MULT         shift and go to state 45
+    OP_DIV          shift and go to state 46
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    VAL_INT_P       shift and go to state 49
+    VAL_INT_N       shift and go to state 50
+    VAL_FL_P        shift and go to state 51
+    VAL_FL_N        shift and go to state 52
+
+  ! COMENT          [ reduce using rule 40 (q5 -> .) ]
+  ! COMENT          [ reduce using rule 12 (q13 -> .) ]
+
+    q12                            shift and go to state 65
+    q13                            shift and go to state 13
+    q1                             shift and go to state 14
+    q2                             shift and go to state 15
+    q3                             shift and go to state 16
+    q4                             shift and go to state 17
+    q5                             shift and go to state 18
+    q8                             shift and go to state 19
+    q11                            shift and go to state 20
+    q6                             shift and go to state 27
+    q7                             shift and go to state 28
+    q10                            shift and go to state 31
+
+state 12
+
+    (4) q0 -> COMENT q12 . COMENT q13
+
+    COMENT          shift and go to state 66
+
+
+state 13
+
+    (63) q12 -> q13 .
+
+    COMENT          reduce using rule 63 (q12 -> q13 .)
+
+
+state 14
+
+    (56) q12 -> q1 .
+
+    COMENT          reduce using rule 56 (q12 -> q1 .)
+
+
+state 15
+
+    (57) q12 -> q2 .
+
+    COMENT          reduce using rule 57 (q12 -> q2 .)
+
+
+state 16
+
+    (58) q12 -> q3 .
+
+    COMENT          reduce using rule 58 (q12 -> q3 .)
+
+
+state 17
+
+    (59) q12 -> q4 .
+
+    COMENT          reduce using rule 59 (q12 -> q4 .)
+
+
+state 18
+
+    (60) q12 -> q5 .
+
+    COMENT          reduce using rule 60 (q12 -> q5 .)
+
+
+state 19
+
+    (61) q12 -> q8 .
+
+    COMENT          reduce using rule 61 (q12 -> q8 .)
+
+
+state 20
+
+    (62) q12 -> q11 .
+
+    COMENT          reduce using rule 62 (q12 -> q11 .)
+
+
+state 21
+
+    (64) q12 -> IDENT .
+    (8) q13 -> IDENT . q13l
+    (49) q10 -> IDENT .
+    (13) q13l -> . DEC_TIPO q1 ATRIB q2 FIM_SEN q13
+    (14) q13l -> . ATRIB q9 FIM_SEN q13
+    (15) q13l -> . ATRIB q10 q11 q10 FIM_SEN q13
+
+  ! reduce/reduce conflict for COMENT resolved using rule 49 (q10 -> IDENT .)
+    COMENT          reduce using rule 49 (q10 -> IDENT .)
+    DEC_TIPO        shift and go to state 68
+    ATRIB           shift and go to state 69
+
+  ! COMENT          [ reduce using rule 64 (q12 -> IDENT .) ]
+
+    q13l                           shift and go to state 67
+
+state 22
+
+    (18) q1 -> TIPO_INT .
+
+    COMENT          reduce using rule 18 (q1 -> TIPO_INT .)
+    ATRIB           reduce using rule 18 (q1 -> TIPO_INT .)
+
+
+state 23
+
+    (19) q1 -> TIPO_FL .
+
+    COMENT          reduce using rule 19 (q1 -> TIPO_FL .)
+    ATRIB           reduce using rule 19 (q1 -> TIPO_FL .)
+
+
+state 24
+
+    (20) q1 -> TIPO_STR .
+
+    COMENT          reduce using rule 20 (q1 -> TIPO_STR .)
+    ATRIB           reduce using rule 20 (q1 -> TIPO_STR .)
+
+
+state 25
+
+    (21) q1 -> TIPO_BOOL .
+
+    COMENT          reduce using rule 21 (q1 -> TIPO_BOOL .)
+    ATRIB           reduce using rule 21 (q1 -> TIPO_BOOL .)
+
+
+state 26
+
+    (22) q2 -> VAL_STR .
+    (30) q3 -> VAL_STR .
+
+  ! reduce/reduce conflict for COMENT resolved using rule 22 (q2 -> VAL_STR .)
+    COMENT          reduce using rule 22 (q2 -> VAL_STR .)
+
+  ! COMENT          [ reduce using rule 30 (q3 -> VAL_STR .) ]
+
+
+state 27
+
+    (23) q2 -> q6 .
+    (50) q10 -> q6 .
+
+  ! reduce/reduce conflict for COMENT resolved using rule 23 (q2 -> q6 .)
+    COMENT          reduce using rule 23 (q2 -> q6 .)
+
+  ! COMENT          [ reduce using rule 50 (q10 -> q6 .) ]
+
+
+state 28
+
+    (24) q2 -> q7 .
+    (51) q10 -> q7 .
+
+  ! reduce/reduce conflict for COMENT resolved using rule 24 (q2 -> q7 .)
+    COMENT          reduce using rule 24 (q2 -> q7 .)
+
+  ! COMENT          [ reduce using rule 51 (q10 -> q7 .) ]
+
+
+state 29
+
+    (25) q2 -> VAL_BOOL .
+    (28) q3 -> VAL_BOOL .
+
+  ! reduce/reduce conflict for COMENT resolved using rule 25 (q2 -> VAL_BOOL .)
+    COMENT          reduce using rule 25 (q2 -> VAL_BOOL .)
+
+  ! COMENT          [ reduce using rule 28 (q3 -> VAL_BOOL .) ]
+
+
+state 30
+
+    (26) q2 -> VAL_NULL .
+    (29) q3 -> VAL_NULL .
+
+  ! reduce/reduce conflict for COMENT resolved using rule 26 (q2 -> VAL_NULL .)
+    COMENT          reduce using rule 26 (q2 -> VAL_NULL .)
+
+  ! COMENT          [ reduce using rule 29 (q3 -> VAL_NULL .) ]
+
+
+state 31
+
+    (27) q3 -> q10 .
+
+    COMENT          reduce using rule 27 (q3 -> q10 .)
+    OP_AND          reduce using rule 27 (q3 -> q10 .)
+    OP_OR           reduce using rule 27 (q3 -> q10 .)
+    OP_IGUAL        reduce using rule 27 (q3 -> q10 .)
+    OP_DIF          reduce using rule 27 (q3 -> q10 .)
+    OP_MAIOR        reduce using rule 27 (q3 -> q10 .)
+    OP_MENOR        reduce using rule 27 (q3 -> q10 .)
+    OP_MAIOR_IG     reduce using rule 27 (q3 -> q10 .)
+    OP_MENOR_IG     reduce using rule 27 (q3 -> q10 .)
+    FIM_EXP         reduce using rule 27 (q3 -> q10 .)
+
+
+state 32
+
+    (31) q4 -> OP_AND .
+
+    COMENT          reduce using rule 31 (q4 -> OP_AND .)
+    OP_NOT          reduce using rule 31 (q4 -> OP_AND .)
+    VAL_BOOL        reduce using rule 31 (q4 -> OP_AND .)
+    VAL_NULL        reduce using rule 31 (q4 -> OP_AND .)
+    VAL_STR         reduce using rule 31 (q4 -> OP_AND .)
+    IDENT           reduce using rule 31 (q4 -> OP_AND .)
+    VAL_INT_P       reduce using rule 31 (q4 -> OP_AND .)
+    VAL_INT_N       reduce using rule 31 (q4 -> OP_AND .)
+    VAL_FL_P        reduce using rule 31 (q4 -> OP_AND .)
+    VAL_FL_N        reduce using rule 31 (q4 -> OP_AND .)
+
+
+state 33
+
+    (32) q4 -> OP_OR .
+
+    COMENT          reduce using rule 32 (q4 -> OP_OR .)
+    OP_NOT          reduce using rule 32 (q4 -> OP_OR .)
+    VAL_BOOL        reduce using rule 32 (q4 -> OP_OR .)
+    VAL_NULL        reduce using rule 32 (q4 -> OP_OR .)
+    VAL_STR         reduce using rule 32 (q4 -> OP_OR .)
+    IDENT           reduce using rule 32 (q4 -> OP_OR .)
+    VAL_INT_P       reduce using rule 32 (q4 -> OP_OR .)
+    VAL_INT_N       reduce using rule 32 (q4 -> OP_OR .)
+    VAL_FL_P        reduce using rule 32 (q4 -> OP_OR .)
+    VAL_FL_N        reduce using rule 32 (q4 -> OP_OR .)
+
+
+state 34
+
+    (33) q4 -> OP_IGUAL .
+
+    COMENT          reduce using rule 33 (q4 -> OP_IGUAL .)
+    OP_NOT          reduce using rule 33 (q4 -> OP_IGUAL .)
+    VAL_BOOL        reduce using rule 33 (q4 -> OP_IGUAL .)
+    VAL_NULL        reduce using rule 33 (q4 -> OP_IGUAL .)
+    VAL_STR         reduce using rule 33 (q4 -> OP_IGUAL .)
+    IDENT           reduce using rule 33 (q4 -> OP_IGUAL .)
+    VAL_INT_P       reduce using rule 33 (q4 -> OP_IGUAL .)
+    VAL_INT_N       reduce using rule 33 (q4 -> OP_IGUAL .)
+    VAL_FL_P        reduce using rule 33 (q4 -> OP_IGUAL .)
+    VAL_FL_N        reduce using rule 33 (q4 -> OP_IGUAL .)
+
+
+state 35
+
+    (34) q4 -> OP_DIF .
+
+    COMENT          reduce using rule 34 (q4 -> OP_DIF .)
+    OP_NOT          reduce using rule 34 (q4 -> OP_DIF .)
+    VAL_BOOL        reduce using rule 34 (q4 -> OP_DIF .)
+    VAL_NULL        reduce using rule 34 (q4 -> OP_DIF .)
+    VAL_STR         reduce using rule 34 (q4 -> OP_DIF .)
+    IDENT           reduce using rule 34 (q4 -> OP_DIF .)
+    VAL_INT_P       reduce using rule 34 (q4 -> OP_DIF .)
+    VAL_INT_N       reduce using rule 34 (q4 -> OP_DIF .)
+    VAL_FL_P        reduce using rule 34 (q4 -> OP_DIF .)
+    VAL_FL_N        reduce using rule 34 (q4 -> OP_DIF .)
+
+
+state 36
+
+    (35) q4 -> OP_MAIOR .
+
+    COMENT          reduce using rule 35 (q4 -> OP_MAIOR .)
+    OP_NOT          reduce using rule 35 (q4 -> OP_MAIOR .)
+    VAL_BOOL        reduce using rule 35 (q4 -> OP_MAIOR .)
+    VAL_NULL        reduce using rule 35 (q4 -> OP_MAIOR .)
+    VAL_STR         reduce using rule 35 (q4 -> OP_MAIOR .)
+    IDENT           reduce using rule 35 (q4 -> OP_MAIOR .)
+    VAL_INT_P       reduce using rule 35 (q4 -> OP_MAIOR .)
+    VAL_INT_N       reduce using rule 35 (q4 -> OP_MAIOR .)
+    VAL_FL_P        reduce using rule 35 (q4 -> OP_MAIOR .)
+    VAL_FL_N        reduce using rule 35 (q4 -> OP_MAIOR .)
+
+
+state 37
+
+    (36) q4 -> OP_MENOR .
+
+    COMENT          reduce using rule 36 (q4 -> OP_MENOR .)
+    OP_NOT          reduce using rule 36 (q4 -> OP_MENOR .)
+    VAL_BOOL        reduce using rule 36 (q4 -> OP_MENOR .)
+    VAL_NULL        reduce using rule 36 (q4 -> OP_MENOR .)
+    VAL_STR         reduce using rule 36 (q4 -> OP_MENOR .)
+    IDENT           reduce using rule 36 (q4 -> OP_MENOR .)
+    VAL_INT_P       reduce using rule 36 (q4 -> OP_MENOR .)
+    VAL_INT_N       reduce using rule 36 (q4 -> OP_MENOR .)
+    VAL_FL_P        reduce using rule 36 (q4 -> OP_MENOR .)
+    VAL_FL_N        reduce using rule 36 (q4 -> OP_MENOR .)
+
+
+state 38
+
+    (37) q4 -> OP_MAIOR_IG .
+
+    COMENT          reduce using rule 37 (q4 -> OP_MAIOR_IG .)
+    OP_NOT          reduce using rule 37 (q4 -> OP_MAIOR_IG .)
+    VAL_BOOL        reduce using rule 37 (q4 -> OP_MAIOR_IG .)
+    VAL_NULL        reduce using rule 37 (q4 -> OP_MAIOR_IG .)
+    VAL_STR         reduce using rule 37 (q4 -> OP_MAIOR_IG .)
+    IDENT           reduce using rule 37 (q4 -> OP_MAIOR_IG .)
+    VAL_INT_P       reduce using rule 37 (q4 -> OP_MAIOR_IG .)
+    VAL_INT_N       reduce using rule 37 (q4 -> OP_MAIOR_IG .)
+    VAL_FL_P        reduce using rule 37 (q4 -> OP_MAIOR_IG .)
+    VAL_FL_N        reduce using rule 37 (q4 -> OP_MAIOR_IG .)
+
+
+state 39
+
+    (38) q4 -> OP_MENOR_IG .
+
+    COMENT          reduce using rule 38 (q4 -> OP_MENOR_IG .)
+    OP_NOT          reduce using rule 38 (q4 -> OP_MENOR_IG .)
+    VAL_BOOL        reduce using rule 38 (q4 -> OP_MENOR_IG .)
+    VAL_NULL        reduce using rule 38 (q4 -> OP_MENOR_IG .)
+    VAL_STR         reduce using rule 38 (q4 -> OP_MENOR_IG .)
+    IDENT           reduce using rule 38 (q4 -> OP_MENOR_IG .)
+    VAL_INT_P       reduce using rule 38 (q4 -> OP_MENOR_IG .)
+    VAL_INT_N       reduce using rule 38 (q4 -> OP_MENOR_IG .)
+    VAL_FL_P        reduce using rule 38 (q4 -> OP_MENOR_IG .)
+    VAL_FL_N        reduce using rule 38 (q4 -> OP_MENOR_IG .)
+
+
+state 40
+
+    (39) q5 -> OP_NOT .
+
+    COMENT          reduce using rule 39 (q5 -> OP_NOT .)
+    VAL_BOOL        reduce using rule 39 (q5 -> OP_NOT .)
+    VAL_NULL        reduce using rule 39 (q5 -> OP_NOT .)
+    VAL_STR         reduce using rule 39 (q5 -> OP_NOT .)
+    IDENT           reduce using rule 39 (q5 -> OP_NOT .)
+    VAL_INT_P       reduce using rule 39 (q5 -> OP_NOT .)
+    VAL_INT_N       reduce using rule 39 (q5 -> OP_NOT .)
+    VAL_FL_P        reduce using rule 39 (q5 -> OP_NOT .)
+    VAL_FL_N        reduce using rule 39 (q5 -> OP_NOT .)
+
+
+state 41
+
+    (45) q8 -> FIM_SEN . q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+  ! shift/reduce conflict for COMENT resolved as shift
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    $end            reduce using rule 12 (q13 -> .)
+
+  ! COMENT          [ reduce using rule 12 (q13 -> .) ]
+
+    q13                            shift and go to state 70
+
+state 42
+
+    (46) q8 -> OP_ELSE . INIT_ESCOPO q13 FIM_ESCOPO q13
+
+    INIT_ESCOPO     shift and go to state 72
+
+
+state 43
+
+    (52) q11 -> OP_SOMA .
+
+    COMENT          reduce using rule 52 (q11 -> OP_SOMA .)
+    IDENT           reduce using rule 52 (q11 -> OP_SOMA .)
+    VAL_INT_P       reduce using rule 52 (q11 -> OP_SOMA .)
+    VAL_INT_N       reduce using rule 52 (q11 -> OP_SOMA .)
+    VAL_FL_P        reduce using rule 52 (q11 -> OP_SOMA .)
+    VAL_FL_N        reduce using rule 52 (q11 -> OP_SOMA .)
+
+
+state 44
+
+    (53) q11 -> OP_SUB .
+
+    COMENT          reduce using rule 53 (q11 -> OP_SUB .)
+    IDENT           reduce using rule 53 (q11 -> OP_SUB .)
+    VAL_INT_P       reduce using rule 53 (q11 -> OP_SUB .)
+    VAL_INT_N       reduce using rule 53 (q11 -> OP_SUB .)
+    VAL_FL_P        reduce using rule 53 (q11 -> OP_SUB .)
+    VAL_FL_N        reduce using rule 53 (q11 -> OP_SUB .)
+
+
+state 45
+
+    (54) q11 -> OP_MULT .
+
+    COMENT          reduce using rule 54 (q11 -> OP_MULT .)
+    IDENT           reduce using rule 54 (q11 -> OP_MULT .)
+    VAL_INT_P       reduce using rule 54 (q11 -> OP_MULT .)
+    VAL_INT_N       reduce using rule 54 (q11 -> OP_MULT .)
+    VAL_FL_P        reduce using rule 54 (q11 -> OP_MULT .)
+    VAL_FL_N        reduce using rule 54 (q11 -> OP_MULT .)
+
+
+state 46
+
+    (55) q11 -> OP_DIV .
+
+    COMENT          reduce using rule 55 (q11 -> OP_DIV .)
+    IDENT           reduce using rule 55 (q11 -> OP_DIV .)
+    VAL_INT_P       reduce using rule 55 (q11 -> OP_DIV .)
+    VAL_INT_N       reduce using rule 55 (q11 -> OP_DIV .)
+    VAL_FL_P        reduce using rule 55 (q11 -> OP_DIV .)
+    VAL_FL_N        reduce using rule 55 (q11 -> OP_DIV .)
+
+
+state 47
+
+    (9) q13 -> OP_IF . INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+
+    INIT_EXP        shift and go to state 73
+
+
+state 48
+
+    (10) q13 -> LACO_FOR . INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+
+    INIT_EXP        shift and go to state 74
+
+
+state 49
+
+    (43) q6 -> VAL_INT_P .
+
+    COMENT          reduce using rule 43 (q6 -> VAL_INT_P .)
+    OP_SOMA         reduce using rule 43 (q6 -> VAL_INT_P .)
+    OP_SUB          reduce using rule 43 (q6 -> VAL_INT_P .)
+    OP_MULT         reduce using rule 43 (q6 -> VAL_INT_P .)
+    OP_DIV          reduce using rule 43 (q6 -> VAL_INT_P .)
+    FIM_SEN         reduce using rule 43 (q6 -> VAL_INT_P .)
+    OP_AND          reduce using rule 43 (q6 -> VAL_INT_P .)
+    OP_OR           reduce using rule 43 (q6 -> VAL_INT_P .)
+    OP_IGUAL        reduce using rule 43 (q6 -> VAL_INT_P .)
+    OP_DIF          reduce using rule 43 (q6 -> VAL_INT_P .)
+    OP_MAIOR        reduce using rule 43 (q6 -> VAL_INT_P .)
+    OP_MENOR        reduce using rule 43 (q6 -> VAL_INT_P .)
+    OP_MAIOR_IG     reduce using rule 43 (q6 -> VAL_INT_P .)
+    OP_MENOR_IG     reduce using rule 43 (q6 -> VAL_INT_P .)
+    OP_TO           reduce using rule 43 (q6 -> VAL_INT_P .)
+    FIM_EXP         reduce using rule 43 (q6 -> VAL_INT_P .)
+
+
+state 50
+
+    (44) q6 -> VAL_INT_N .
+
+    COMENT          reduce using rule 44 (q6 -> VAL_INT_N .)
+    OP_SOMA         reduce using rule 44 (q6 -> VAL_INT_N .)
+    OP_SUB          reduce using rule 44 (q6 -> VAL_INT_N .)
+    OP_MULT         reduce using rule 44 (q6 -> VAL_INT_N .)
+    OP_DIV          reduce using rule 44 (q6 -> VAL_INT_N .)
+    FIM_SEN         reduce using rule 44 (q6 -> VAL_INT_N .)
+    OP_AND          reduce using rule 44 (q6 -> VAL_INT_N .)
+    OP_OR           reduce using rule 44 (q6 -> VAL_INT_N .)
+    OP_IGUAL        reduce using rule 44 (q6 -> VAL_INT_N .)
+    OP_DIF          reduce using rule 44 (q6 -> VAL_INT_N .)
+    OP_MAIOR        reduce using rule 44 (q6 -> VAL_INT_N .)
+    OP_MENOR        reduce using rule 44 (q6 -> VAL_INT_N .)
+    OP_MAIOR_IG     reduce using rule 44 (q6 -> VAL_INT_N .)
+    OP_MENOR_IG     reduce using rule 44 (q6 -> VAL_INT_N .)
+    OP_TO           reduce using rule 44 (q6 -> VAL_INT_N .)
+    FIM_EXP         reduce using rule 44 (q6 -> VAL_INT_N .)
+
+
+state 51
+
+    (41) q7 -> VAL_FL_P .
+
+    COMENT          reduce using rule 41 (q7 -> VAL_FL_P .)
+    OP_SOMA         reduce using rule 41 (q7 -> VAL_FL_P .)
+    OP_SUB          reduce using rule 41 (q7 -> VAL_FL_P .)
+    OP_MULT         reduce using rule 41 (q7 -> VAL_FL_P .)
+    OP_DIV          reduce using rule 41 (q7 -> VAL_FL_P .)
+    FIM_SEN         reduce using rule 41 (q7 -> VAL_FL_P .)
+    OP_AND          reduce using rule 41 (q7 -> VAL_FL_P .)
+    OP_OR           reduce using rule 41 (q7 -> VAL_FL_P .)
+    OP_IGUAL        reduce using rule 41 (q7 -> VAL_FL_P .)
+    OP_DIF          reduce using rule 41 (q7 -> VAL_FL_P .)
+    OP_MAIOR        reduce using rule 41 (q7 -> VAL_FL_P .)
+    OP_MENOR        reduce using rule 41 (q7 -> VAL_FL_P .)
+    OP_MAIOR_IG     reduce using rule 41 (q7 -> VAL_FL_P .)
+    OP_MENOR_IG     reduce using rule 41 (q7 -> VAL_FL_P .)
+    FIM_EXP         reduce using rule 41 (q7 -> VAL_FL_P .)
+
+
+state 52
+
+    (42) q7 -> VAL_FL_N .
+
+    COMENT          reduce using rule 42 (q7 -> VAL_FL_N .)
+    OP_SOMA         reduce using rule 42 (q7 -> VAL_FL_N .)
+    OP_SUB          reduce using rule 42 (q7 -> VAL_FL_N .)
+    OP_MULT         reduce using rule 42 (q7 -> VAL_FL_N .)
+    OP_DIV          reduce using rule 42 (q7 -> VAL_FL_N .)
+    FIM_SEN         reduce using rule 42 (q7 -> VAL_FL_N .)
+    OP_AND          reduce using rule 42 (q7 -> VAL_FL_N .)
+    OP_OR           reduce using rule 42 (q7 -> VAL_FL_N .)
+    OP_IGUAL        reduce using rule 42 (q7 -> VAL_FL_N .)
+    OP_DIF          reduce using rule 42 (q7 -> VAL_FL_N .)
+    OP_MAIOR        reduce using rule 42 (q7 -> VAL_FL_N .)
+    OP_MENOR        reduce using rule 42 (q7 -> VAL_FL_N .)
+    OP_MAIOR_IG     reduce using rule 42 (q7 -> VAL_FL_N .)
+    OP_MENOR_IG     reduce using rule 42 (q7 -> VAL_FL_N .)
+    FIM_EXP         reduce using rule 42 (q7 -> VAL_FL_N .)
+
+
+state 53
+
+    (5) q0l -> DEC_TIPO q1 . ATRIB q2 FIM_SEN q13
+
+    ATRIB           shift and go to state 75
+
+
+state 54
+
+    (6) q0l -> ATRIB q9 . FIM_SEN q13
+
+    FIM_SEN         shift and go to state 76
+
+
+state 55
+
+    (7) q0l -> ATRIB q10 . q11 q10 FIM_SEN q13
+    (48) q9 -> q10 . q11 q10
+    (27) q3 -> q10 .
+    (52) q11 -> . OP_SOMA
+    (53) q11 -> . OP_SUB
+    (54) q11 -> . OP_MULT
+    (55) q11 -> . OP_DIV
+
+    FIM_SEN         reduce using rule 27 (q3 -> q10 .)
+    OP_SOMA         shift and go to state 43
+    OP_SUB          shift and go to state 44
+    OP_MULT         shift and go to state 45
+    OP_DIV          shift and go to state 46
+
+    q11                            shift and go to state 77
+
+state 56
+
+    (47) q9 -> q3 .
+
+    FIM_SEN         reduce using rule 47 (q9 -> q3 .)
+
+
+state 57
+
+    (49) q10 -> IDENT .
+
+    OP_SOMA         reduce using rule 49 (q10 -> IDENT .)
+    OP_SUB          reduce using rule 49 (q10 -> IDENT .)
+    OP_MULT         reduce using rule 49 (q10 -> IDENT .)
+    OP_DIV          reduce using rule 49 (q10 -> IDENT .)
+    FIM_SEN         reduce using rule 49 (q10 -> IDENT .)
+    OP_AND          reduce using rule 49 (q10 -> IDENT .)
+    OP_OR           reduce using rule 49 (q10 -> IDENT .)
+    OP_IGUAL        reduce using rule 49 (q10 -> IDENT .)
+    OP_DIF          reduce using rule 49 (q10 -> IDENT .)
+    OP_MAIOR        reduce using rule 49 (q10 -> IDENT .)
+    OP_MENOR        reduce using rule 49 (q10 -> IDENT .)
+    OP_MAIOR_IG     reduce using rule 49 (q10 -> IDENT .)
+    OP_MENOR_IG     reduce using rule 49 (q10 -> IDENT .)
+    FIM_EXP         reduce using rule 49 (q10 -> IDENT .)
+
+
+state 58
+
+    (50) q10 -> q6 .
+
+    OP_SOMA         reduce using rule 50 (q10 -> q6 .)
+    OP_SUB          reduce using rule 50 (q10 -> q6 .)
+    OP_MULT         reduce using rule 50 (q10 -> q6 .)
+    OP_DIV          reduce using rule 50 (q10 -> q6 .)
+    FIM_SEN         reduce using rule 50 (q10 -> q6 .)
+    OP_AND          reduce using rule 50 (q10 -> q6 .)
+    OP_OR           reduce using rule 50 (q10 -> q6 .)
+    OP_IGUAL        reduce using rule 50 (q10 -> q6 .)
+    OP_DIF          reduce using rule 50 (q10 -> q6 .)
+    OP_MAIOR        reduce using rule 50 (q10 -> q6 .)
+    OP_MENOR        reduce using rule 50 (q10 -> q6 .)
+    OP_MAIOR_IG     reduce using rule 50 (q10 -> q6 .)
+    OP_MENOR_IG     reduce using rule 50 (q10 -> q6 .)
+    FIM_EXP         reduce using rule 50 (q10 -> q6 .)
+
+
+state 59
+
+    (51) q10 -> q7 .
+
+    OP_SOMA         reduce using rule 51 (q10 -> q7 .)
+    OP_SUB          reduce using rule 51 (q10 -> q7 .)
+    OP_MULT         reduce using rule 51 (q10 -> q7 .)
+    OP_DIV          reduce using rule 51 (q10 -> q7 .)
+    FIM_SEN         reduce using rule 51 (q10 -> q7 .)
+    OP_AND          reduce using rule 51 (q10 -> q7 .)
+    OP_OR           reduce using rule 51 (q10 -> q7 .)
+    OP_IGUAL        reduce using rule 51 (q10 -> q7 .)
+    OP_DIF          reduce using rule 51 (q10 -> q7 .)
+    OP_MAIOR        reduce using rule 51 (q10 -> q7 .)
+    OP_MENOR        reduce using rule 51 (q10 -> q7 .)
+    OP_MAIOR_IG     reduce using rule 51 (q10 -> q7 .)
+    OP_MENOR_IG     reduce using rule 51 (q10 -> q7 .)
+    FIM_EXP         reduce using rule 51 (q10 -> q7 .)
+
+
+state 60
+
+    (28) q3 -> VAL_BOOL .
+
+    FIM_SEN         reduce using rule 28 (q3 -> VAL_BOOL .)
+    OP_AND          reduce using rule 28 (q3 -> VAL_BOOL .)
+    OP_OR           reduce using rule 28 (q3 -> VAL_BOOL .)
+    OP_IGUAL        reduce using rule 28 (q3 -> VAL_BOOL .)
+    OP_DIF          reduce using rule 28 (q3 -> VAL_BOOL .)
+    OP_MAIOR        reduce using rule 28 (q3 -> VAL_BOOL .)
+    OP_MENOR        reduce using rule 28 (q3 -> VAL_BOOL .)
+    OP_MAIOR_IG     reduce using rule 28 (q3 -> VAL_BOOL .)
+    OP_MENOR_IG     reduce using rule 28 (q3 -> VAL_BOOL .)
+    FIM_EXP         reduce using rule 28 (q3 -> VAL_BOOL .)
+
+
+state 61
+
+    (29) q3 -> VAL_NULL .
+
+    FIM_SEN         reduce using rule 29 (q3 -> VAL_NULL .)
+    OP_AND          reduce using rule 29 (q3 -> VAL_NULL .)
+    OP_OR           reduce using rule 29 (q3 -> VAL_NULL .)
+    OP_IGUAL        reduce using rule 29 (q3 -> VAL_NULL .)
+    OP_DIF          reduce using rule 29 (q3 -> VAL_NULL .)
+    OP_MAIOR        reduce using rule 29 (q3 -> VAL_NULL .)
+    OP_MENOR        reduce using rule 29 (q3 -> VAL_NULL .)
+    OP_MAIOR_IG     reduce using rule 29 (q3 -> VAL_NULL .)
+    OP_MENOR_IG     reduce using rule 29 (q3 -> VAL_NULL .)
+    FIM_EXP         reduce using rule 29 (q3 -> VAL_NULL .)
+
+
+state 62
+
+    (30) q3 -> VAL_STR .
+
+    FIM_SEN         reduce using rule 30 (q3 -> VAL_STR .)
+    OP_AND          reduce using rule 30 (q3 -> VAL_STR .)
+    OP_OR           reduce using rule 30 (q3 -> VAL_STR .)
+    OP_IGUAL        reduce using rule 30 (q3 -> VAL_STR .)
+    OP_DIF          reduce using rule 30 (q3 -> VAL_STR .)
+    OP_MAIOR        reduce using rule 30 (q3 -> VAL_STR .)
+    OP_MENOR        reduce using rule 30 (q3 -> VAL_STR .)
+    OP_MAIOR_IG     reduce using rule 30 (q3 -> VAL_STR .)
+    OP_MENOR_IG     reduce using rule 30 (q3 -> VAL_STR .)
+    FIM_EXP         reduce using rule 30 (q3 -> VAL_STR .)
+
+
+state 63
+
+    (2) q0 -> OP_IF INIT_EXP q5 . q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q8
+    (27) q3 -> . q10
+    (28) q3 -> . VAL_BOOL
+    (29) q3 -> . VAL_NULL
+    (30) q3 -> . VAL_STR
+    (49) q10 -> . IDENT
+    (50) q10 -> . q6
+    (51) q10 -> . q7
+    (43) q6 -> . VAL_INT_P
+    (44) q6 -> . VAL_INT_N
+    (41) q7 -> . VAL_FL_P
+    (42) q7 -> . VAL_FL_N
+
+    VAL_BOOL        shift and go to state 60
+    VAL_NULL        shift and go to state 61
+    VAL_STR         shift and go to state 62
+    IDENT           shift and go to state 57
+    VAL_INT_P       shift and go to state 49
+    VAL_INT_N       shift and go to state 50
+    VAL_FL_P        shift and go to state 51
+    VAL_FL_N        shift and go to state 52
+
+    q3                             shift and go to state 78
+    q10                            shift and go to state 31
+    q6                             shift and go to state 58
+    q7                             shift and go to state 59
+
+state 64
+
+    (3) q0 -> LACO_FOR INIT_EXP IDENT . ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+
+    ATRIB           shift and go to state 79
+
+
+state 65
+
+    (11) q13 -> COMENT q12 . COMENT q13
+
+    COMENT          shift and go to state 80
+
+
+state 66
+
+    (4) q0 -> COMENT q12 COMENT . q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    $end            reduce using rule 12 (q13 -> .)
+
+    q13                            shift and go to state 81
+
+state 67
+
+    (8) q13 -> IDENT q13l .
+
+    COMENT          reduce using rule 8 (q13 -> IDENT q13l .)
+    $end            reduce using rule 8 (q13 -> IDENT q13l .)
+    FIM_ESCOPO      reduce using rule 8 (q13 -> IDENT q13l .)
+
+
+state 68
+
+    (13) q13l -> DEC_TIPO . q1 ATRIB q2 FIM_SEN q13
+    (18) q1 -> . TIPO_INT
+    (19) q1 -> . TIPO_FL
+    (20) q1 -> . TIPO_STR
+    (21) q1 -> . TIPO_BOOL
+
+    TIPO_INT        shift and go to state 22
+    TIPO_FL         shift and go to state 23
+    TIPO_STR        shift and go to state 24
+    TIPO_BOOL       shift and go to state 25
+
+    q1                             shift and go to state 82
+
+state 69
+
+    (14) q13l -> ATRIB . q9 FIM_SEN q13
+    (15) q13l -> ATRIB . q10 q11 q10 FIM_SEN q13
+    (47) q9 -> . q3
+    (48) q9 -> . q10 q11 q10
+    (49) q10 -> . IDENT
+    (50) q10 -> . q6
+    (51) q10 -> . q7
+    (27) q3 -> . q10
+    (28) q3 -> . VAL_BOOL
+    (29) q3 -> . VAL_NULL
+    (30) q3 -> . VAL_STR
+    (43) q6 -> . VAL_INT_P
+    (44) q6 -> . VAL_INT_N
+    (41) q7 -> . VAL_FL_P
+    (42) q7 -> . VAL_FL_N
+
+    IDENT           shift and go to state 57
+    VAL_BOOL        shift and go to state 60
+    VAL_NULL        shift and go to state 61
+    VAL_STR         shift and go to state 62
+    VAL_INT_P       shift and go to state 49
+    VAL_INT_N       shift and go to state 50
+    VAL_FL_P        shift and go to state 51
+    VAL_FL_N        shift and go to state 52
+
+    q9                             shift and go to state 83
+    q10                            shift and go to state 84
+    q3                             shift and go to state 56
+    q6                             shift and go to state 58
+    q7                             shift and go to state 59
+
+state 70
+
+    (45) q8 -> FIM_SEN q13 .
+
+    COMENT          reduce using rule 45 (q8 -> FIM_SEN q13 .)
+    $end            reduce using rule 45 (q8 -> FIM_SEN q13 .)
+
+
+state 71
+
+    (8) q13 -> IDENT . q13l
+    (13) q13l -> . DEC_TIPO q1 ATRIB q2 FIM_SEN q13
+    (14) q13l -> . ATRIB q9 FIM_SEN q13
+    (15) q13l -> . ATRIB q10 q11 q10 FIM_SEN q13
+
+    DEC_TIPO        shift and go to state 68
+    ATRIB           shift and go to state 69
+
+    q13l                           shift and go to state 67
+
+state 72
+
+    (46) q8 -> OP_ELSE INIT_ESCOPO . q13 FIM_ESCOPO q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    FIM_ESCOPO      reduce using rule 12 (q13 -> .)
+
+    q13                            shift and go to state 85
+
+state 73
+
+    (9) q13 -> OP_IF INIT_EXP . q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (39) q5 -> . OP_NOT
+    (40) q5 -> .
+
+    OP_NOT          shift and go to state 40
+    VAL_BOOL        reduce using rule 40 (q5 -> .)
+    VAL_NULL        reduce using rule 40 (q5 -> .)
+    VAL_STR         reduce using rule 40 (q5 -> .)
+    IDENT           reduce using rule 40 (q5 -> .)
+    VAL_INT_P       reduce using rule 40 (q5 -> .)
+    VAL_INT_N       reduce using rule 40 (q5 -> .)
+    VAL_FL_P        reduce using rule 40 (q5 -> .)
+    VAL_FL_N        reduce using rule 40 (q5 -> .)
+
+    q5                             shift and go to state 86
+
+state 74
+
+    (10) q13 -> LACO_FOR INIT_EXP . IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+
+    IDENT           shift and go to state 87
+
+
+state 75
+
+    (5) q0l -> DEC_TIPO q1 ATRIB . q2 FIM_SEN q13
+    (22) q2 -> . VAL_STR
+    (23) q2 -> . q6
+    (24) q2 -> . q7
+    (25) q2 -> . VAL_BOOL
+    (26) q2 -> . VAL_NULL
+    (43) q6 -> . VAL_INT_P
+    (44) q6 -> . VAL_INT_N
+    (41) q7 -> . VAL_FL_P
+    (42) q7 -> . VAL_FL_N
+
+    VAL_STR         shift and go to state 89
+    VAL_BOOL        shift and go to state 92
+    VAL_NULL        shift and go to state 93
+    VAL_INT_P       shift and go to state 49
+    VAL_INT_N       shift and go to state 50
+    VAL_FL_P        shift and go to state 51
+    VAL_FL_N        shift and go to state 52
+
+    q2                             shift and go to state 88
+    q6                             shift and go to state 90
+    q7                             shift and go to state 91
+
+state 76
+
+    (6) q0l -> ATRIB q9 FIM_SEN . q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    $end            reduce using rule 12 (q13 -> .)
+
+    q13                            shift and go to state 94
+
+state 77
+
+    (7) q0l -> ATRIB q10 q11 . q10 FIM_SEN q13
+    (48) q9 -> q10 q11 . q10
+    (49) q10 -> . IDENT
+    (50) q10 -> . q6
+    (51) q10 -> . q7
+    (43) q6 -> . VAL_INT_P
+    (44) q6 -> . VAL_INT_N
+    (41) q7 -> . VAL_FL_P
+    (42) q7 -> . VAL_FL_N
+
+    IDENT           shift and go to state 57
+    VAL_INT_P       shift and go to state 49
+    VAL_INT_N       shift and go to state 50
+    VAL_FL_P        shift and go to state 51
+    VAL_FL_N        shift and go to state 52
+
+    q10                            shift and go to state 95
+    q6                             shift and go to state 58
+    q7                             shift and go to state 59
+
+state 78
+
+    (2) q0 -> OP_IF INIT_EXP q5 q3 . q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q8
+    (31) q4 -> . OP_AND
+    (32) q4 -> . OP_OR
+    (33) q4 -> . OP_IGUAL
+    (34) q4 -> . OP_DIF
+    (35) q4 -> . OP_MAIOR
+    (36) q4 -> . OP_MENOR
+    (37) q4 -> . OP_MAIOR_IG
+    (38) q4 -> . OP_MENOR_IG
+
+    OP_AND          shift and go to state 32
+    OP_OR           shift and go to state 33
+    OP_IGUAL        shift and go to state 34
+    OP_DIF          shift and go to state 35
+    OP_MAIOR        shift and go to state 36
+    OP_MENOR        shift and go to state 37
+    OP_MAIOR_IG     shift and go to state 38
+    OP_MENOR_IG     shift and go to state 39
+
+    q4                             shift and go to state 96
+
+state 79
+
+    (3) q0 -> LACO_FOR INIT_EXP IDENT ATRIB . q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (43) q6 -> . VAL_INT_P
+    (44) q6 -> . VAL_INT_N
+
+    VAL_INT_P       shift and go to state 49
+    VAL_INT_N       shift and go to state 50
+
+    q6                             shift and go to state 97
+
+state 80
+
+    (11) q13 -> COMENT q12 COMENT . q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+  ! shift/reduce conflict for COMENT resolved as shift
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    $end            reduce using rule 12 (q13 -> .)
+    FIM_ESCOPO      reduce using rule 12 (q13 -> .)
+
+  ! COMENT          [ reduce using rule 12 (q13 -> .) ]
+
+    q13                            shift and go to state 98
+
+state 81
+
+    (4) q0 -> COMENT q12 COMENT q13 .
+
+    $end            reduce using rule 4 (q0 -> COMENT q12 COMENT q13 .)
+
+
+state 82
+
+    (13) q13l -> DEC_TIPO q1 . ATRIB q2 FIM_SEN q13
+
+    ATRIB           shift and go to state 99
+
+
+state 83
+
+    (14) q13l -> ATRIB q9 . FIM_SEN q13
+
+    FIM_SEN         shift and go to state 100
+
+
+state 84
+
+    (15) q13l -> ATRIB q10 . q11 q10 FIM_SEN q13
+    (48) q9 -> q10 . q11 q10
+    (27) q3 -> q10 .
+    (52) q11 -> . OP_SOMA
+    (53) q11 -> . OP_SUB
+    (54) q11 -> . OP_MULT
+    (55) q11 -> . OP_DIV
+
+    FIM_SEN         reduce using rule 27 (q3 -> q10 .)
+    OP_SOMA         shift and go to state 43
+    OP_SUB          shift and go to state 44
+    OP_MULT         shift and go to state 45
+    OP_DIV          shift and go to state 46
+
+    q11                            shift and go to state 101
+
+state 85
+
+    (46) q8 -> OP_ELSE INIT_ESCOPO q13 . FIM_ESCOPO q13
+
+    FIM_ESCOPO      shift and go to state 102
+
+
+state 86
+
+    (9) q13 -> OP_IF INIT_EXP q5 . q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (27) q3 -> . q10
+    (28) q3 -> . VAL_BOOL
+    (29) q3 -> . VAL_NULL
+    (30) q3 -> . VAL_STR
+    (49) q10 -> . IDENT
+    (50) q10 -> . q6
+    (51) q10 -> . q7
+    (43) q6 -> . VAL_INT_P
+    (44) q6 -> . VAL_INT_N
+    (41) q7 -> . VAL_FL_P
+    (42) q7 -> . VAL_FL_N
+
+    VAL_BOOL        shift and go to state 60
+    VAL_NULL        shift and go to state 61
+    VAL_STR         shift and go to state 62
+    IDENT           shift and go to state 57
+    VAL_INT_P       shift and go to state 49
+    VAL_INT_N       shift and go to state 50
+    VAL_FL_P        shift and go to state 51
+    VAL_FL_N        shift and go to state 52
+
+    q3                             shift and go to state 103
+    q10                            shift and go to state 31
+    q6                             shift and go to state 58
+    q7                             shift and go to state 59
+
+state 87
+
+    (10) q13 -> LACO_FOR INIT_EXP IDENT . ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+
+    ATRIB           shift and go to state 104
+
+
+state 88
+
+    (5) q0l -> DEC_TIPO q1 ATRIB q2 . FIM_SEN q13
+
+    FIM_SEN         shift and go to state 105
+
+
+state 89
+
+    (22) q2 -> VAL_STR .
+
+    FIM_SEN         reduce using rule 22 (q2 -> VAL_STR .)
+
+
+state 90
+
+    (23) q2 -> q6 .
+
+    FIM_SEN         reduce using rule 23 (q2 -> q6 .)
+
+
+state 91
+
+    (24) q2 -> q7 .
+
+    FIM_SEN         reduce using rule 24 (q2 -> q7 .)
+
+
+state 92
+
+    (25) q2 -> VAL_BOOL .
+
+    FIM_SEN         reduce using rule 25 (q2 -> VAL_BOOL .)
+
+
+state 93
+
+    (26) q2 -> VAL_NULL .
+
+    FIM_SEN         reduce using rule 26 (q2 -> VAL_NULL .)
+
+
+state 94
+
+    (6) q0l -> ATRIB q9 FIM_SEN q13 .
+
+    $end            reduce using rule 6 (q0l -> ATRIB q9 FIM_SEN q13 .)
+
+
+state 95
+
+    (7) q0l -> ATRIB q10 q11 q10 . FIM_SEN q13
+    (48) q9 -> q10 q11 q10 .
+
+  ! shift/reduce conflict for FIM_SEN resolved as shift
+    FIM_SEN         shift and go to state 106
+
+  ! FIM_SEN         [ reduce using rule 48 (q9 -> q10 q11 q10 .) ]
+
+
+state 96
+
+    (2) q0 -> OP_IF INIT_EXP q5 q3 q4 . q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q8
+    (39) q5 -> . OP_NOT
+    (40) q5 -> .
+
+    OP_NOT          shift and go to state 40
+    VAL_BOOL        reduce using rule 40 (q5 -> .)
+    VAL_NULL        reduce using rule 40 (q5 -> .)
+    VAL_STR         reduce using rule 40 (q5 -> .)
+    IDENT           reduce using rule 40 (q5 -> .)
+    VAL_INT_P       reduce using rule 40 (q5 -> .)
+    VAL_INT_N       reduce using rule 40 (q5 -> .)
+    VAL_FL_P        reduce using rule 40 (q5 -> .)
+    VAL_FL_N        reduce using rule 40 (q5 -> .)
+
+    q5                             shift and go to state 107
+
+state 97
+
+    (3) q0 -> LACO_FOR INIT_EXP IDENT ATRIB q6 . OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+
+    OP_TO           shift and go to state 108
+
+
+state 98
+
+    (11) q13 -> COMENT q12 COMENT q13 .
+
+    COMENT          reduce using rule 11 (q13 -> COMENT q12 COMENT q13 .)
+    $end            reduce using rule 11 (q13 -> COMENT q12 COMENT q13 .)
+    FIM_ESCOPO      reduce using rule 11 (q13 -> COMENT q12 COMENT q13 .)
+
+
+state 99
+
+    (13) q13l -> DEC_TIPO q1 ATRIB . q2 FIM_SEN q13
+    (22) q2 -> . VAL_STR
+    (23) q2 -> . q6
+    (24) q2 -> . q7
+    (25) q2 -> . VAL_BOOL
+    (26) q2 -> . VAL_NULL
+    (43) q6 -> . VAL_INT_P
+    (44) q6 -> . VAL_INT_N
+    (41) q7 -> . VAL_FL_P
+    (42) q7 -> . VAL_FL_N
+
+    VAL_STR         shift and go to state 89
+    VAL_BOOL        shift and go to state 92
+    VAL_NULL        shift and go to state 93
+    VAL_INT_P       shift and go to state 49
+    VAL_INT_N       shift and go to state 50
+    VAL_FL_P        shift and go to state 51
+    VAL_FL_N        shift and go to state 52
+
+    q2                             shift and go to state 109
+    q6                             shift and go to state 90
+    q7                             shift and go to state 91
+
+state 100
+
+    (14) q13l -> ATRIB q9 FIM_SEN . q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+  ! shift/reduce conflict for COMENT resolved as shift
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    $end            reduce using rule 12 (q13 -> .)
+    FIM_ESCOPO      reduce using rule 12 (q13 -> .)
+
+  ! COMENT          [ reduce using rule 12 (q13 -> .) ]
+
+    q13                            shift and go to state 110
+
+state 101
+
+    (15) q13l -> ATRIB q10 q11 . q10 FIM_SEN q13
+    (48) q9 -> q10 q11 . q10
+    (49) q10 -> . IDENT
+    (50) q10 -> . q6
+    (51) q10 -> . q7
+    (43) q6 -> . VAL_INT_P
+    (44) q6 -> . VAL_INT_N
+    (41) q7 -> . VAL_FL_P
+    (42) q7 -> . VAL_FL_N
+
+    IDENT           shift and go to state 57
+    VAL_INT_P       shift and go to state 49
+    VAL_INT_N       shift and go to state 50
+    VAL_FL_P        shift and go to state 51
+    VAL_FL_N        shift and go to state 52
+
+    q10                            shift and go to state 111
+    q6                             shift and go to state 58
+    q7                             shift and go to state 59
+
+state 102
+
+    (46) q8 -> OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO . q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+  ! shift/reduce conflict for COMENT resolved as shift
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    $end            reduce using rule 12 (q13 -> .)
+
+  ! COMENT          [ reduce using rule 12 (q13 -> .) ]
+
+    q13                            shift and go to state 112
+
+state 103
+
+    (9) q13 -> OP_IF INIT_EXP q5 q3 . q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (31) q4 -> . OP_AND
+    (32) q4 -> . OP_OR
+    (33) q4 -> . OP_IGUAL
+    (34) q4 -> . OP_DIF
+    (35) q4 -> . OP_MAIOR
+    (36) q4 -> . OP_MENOR
+    (37) q4 -> . OP_MAIOR_IG
+    (38) q4 -> . OP_MENOR_IG
+
+    OP_AND          shift and go to state 32
+    OP_OR           shift and go to state 33
+    OP_IGUAL        shift and go to state 34
+    OP_DIF          shift and go to state 35
+    OP_MAIOR        shift and go to state 36
+    OP_MENOR        shift and go to state 37
+    OP_MAIOR_IG     shift and go to state 38
+    OP_MENOR_IG     shift and go to state 39
+
+    q4                             shift and go to state 113
+
+state 104
+
+    (10) q13 -> LACO_FOR INIT_EXP IDENT ATRIB . q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (43) q6 -> . VAL_INT_P
+    (44) q6 -> . VAL_INT_N
+
+    VAL_INT_P       shift and go to state 49
+    VAL_INT_N       shift and go to state 50
+
+    q6                             shift and go to state 114
+
+state 105
+
+    (5) q0l -> DEC_TIPO q1 ATRIB q2 FIM_SEN . q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    $end            reduce using rule 12 (q13 -> .)
+
+    q13                            shift and go to state 115
+
+state 106
+
+    (7) q0l -> ATRIB q10 q11 q10 FIM_SEN . q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    $end            reduce using rule 12 (q13 -> .)
+
+    q13                            shift and go to state 116
+
+state 107
+
+    (2) q0 -> OP_IF INIT_EXP q5 q3 q4 q5 . q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q8
+    (27) q3 -> . q10
+    (28) q3 -> . VAL_BOOL
+    (29) q3 -> . VAL_NULL
+    (30) q3 -> . VAL_STR
+    (49) q10 -> . IDENT
+    (50) q10 -> . q6
+    (51) q10 -> . q7
+    (43) q6 -> . VAL_INT_P
+    (44) q6 -> . VAL_INT_N
+    (41) q7 -> . VAL_FL_P
+    (42) q7 -> . VAL_FL_N
+
+    VAL_BOOL        shift and go to state 60
+    VAL_NULL        shift and go to state 61
+    VAL_STR         shift and go to state 62
+    IDENT           shift and go to state 57
+    VAL_INT_P       shift and go to state 49
+    VAL_INT_N       shift and go to state 50
+    VAL_FL_P        shift and go to state 51
+    VAL_FL_N        shift and go to state 52
+
+    q3                             shift and go to state 117
+    q10                            shift and go to state 31
+    q6                             shift and go to state 58
+    q7                             shift and go to state 59
+
+state 108
+
+    (3) q0 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO . q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (43) q6 -> . VAL_INT_P
+    (44) q6 -> . VAL_INT_N
+
+    VAL_INT_P       shift and go to state 49
+    VAL_INT_N       shift and go to state 50
+
+    q6                             shift and go to state 118
+
+state 109
+
+    (13) q13l -> DEC_TIPO q1 ATRIB q2 . FIM_SEN q13
+
+    FIM_SEN         shift and go to state 119
+
+
+state 110
+
+    (14) q13l -> ATRIB q9 FIM_SEN q13 .
+
+    COMENT          reduce using rule 14 (q13l -> ATRIB q9 FIM_SEN q13 .)
+    $end            reduce using rule 14 (q13l -> ATRIB q9 FIM_SEN q13 .)
+    FIM_ESCOPO      reduce using rule 14 (q13l -> ATRIB q9 FIM_SEN q13 .)
+
+
+state 111
+
+    (15) q13l -> ATRIB q10 q11 q10 . FIM_SEN q13
+    (48) q9 -> q10 q11 q10 .
+
+  ! shift/reduce conflict for FIM_SEN resolved as shift
+    FIM_SEN         shift and go to state 120
+
+  ! FIM_SEN         [ reduce using rule 48 (q9 -> q10 q11 q10 .) ]
+
+
+state 112
+
+    (46) q8 -> OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO q13 .
+
+    COMENT          reduce using rule 46 (q8 -> OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO q13 .)
+    $end            reduce using rule 46 (q8 -> OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO q13 .)
+
+
+state 113
+
+    (9) q13 -> OP_IF INIT_EXP q5 q3 q4 . q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (39) q5 -> . OP_NOT
+    (40) q5 -> .
+
+    OP_NOT          shift and go to state 40
+    VAL_BOOL        reduce using rule 40 (q5 -> .)
+    VAL_NULL        reduce using rule 40 (q5 -> .)
+    VAL_STR         reduce using rule 40 (q5 -> .)
+    IDENT           reduce using rule 40 (q5 -> .)
+    VAL_INT_P       reduce using rule 40 (q5 -> .)
+    VAL_INT_N       reduce using rule 40 (q5 -> .)
+    VAL_FL_P        reduce using rule 40 (q5 -> .)
+    VAL_FL_N        reduce using rule 40 (q5 -> .)
+
+    q5                             shift and go to state 121
+
+state 114
+
+    (10) q13 -> LACO_FOR INIT_EXP IDENT ATRIB q6 . OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+
+    OP_TO           shift and go to state 122
+
+
+state 115
+
+    (5) q0l -> DEC_TIPO q1 ATRIB q2 FIM_SEN q13 .
+
+    $end            reduce using rule 5 (q0l -> DEC_TIPO q1 ATRIB q2 FIM_SEN q13 .)
+
+
+state 116
+
+    (7) q0l -> ATRIB q10 q11 q10 FIM_SEN q13 .
+
+    $end            reduce using rule 7 (q0l -> ATRIB q10 q11 q10 FIM_SEN q13 .)
+
+
+state 117
+
+    (2) q0 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 . FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q8
+
+    FIM_EXP         shift and go to state 123
+
+
+state 118
+
+    (3) q0 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 . FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+
+    FIM_EXP         shift and go to state 124
+
+
+state 119
+
+    (13) q13l -> DEC_TIPO q1 ATRIB q2 FIM_SEN . q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+  ! shift/reduce conflict for COMENT resolved as shift
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    $end            reduce using rule 12 (q13 -> .)
+    FIM_ESCOPO      reduce using rule 12 (q13 -> .)
+
+  ! COMENT          [ reduce using rule 12 (q13 -> .) ]
+
+    q13                            shift and go to state 125
+
+state 120
+
+    (15) q13l -> ATRIB q10 q11 q10 FIM_SEN . q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+  ! shift/reduce conflict for COMENT resolved as shift
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    $end            reduce using rule 12 (q13 -> .)
+    FIM_ESCOPO      reduce using rule 12 (q13 -> .)
+
+  ! COMENT          [ reduce using rule 12 (q13 -> .) ]
+
+    q13                            shift and go to state 126
+
+state 121
+
+    (9) q13 -> OP_IF INIT_EXP q5 q3 q4 q5 . q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (27) q3 -> . q10
+    (28) q3 -> . VAL_BOOL
+    (29) q3 -> . VAL_NULL
+    (30) q3 -> . VAL_STR
+    (49) q10 -> . IDENT
+    (50) q10 -> . q6
+    (51) q10 -> . q7
+    (43) q6 -> . VAL_INT_P
+    (44) q6 -> . VAL_INT_N
+    (41) q7 -> . VAL_FL_P
+    (42) q7 -> . VAL_FL_N
+
+    VAL_BOOL        shift and go to state 60
+    VAL_NULL        shift and go to state 61
+    VAL_STR         shift and go to state 62
+    IDENT           shift and go to state 57
+    VAL_INT_P       shift and go to state 49
+    VAL_INT_N       shift and go to state 50
+    VAL_FL_P        shift and go to state 51
+    VAL_FL_N        shift and go to state 52
+
+    q3                             shift and go to state 127
+    q10                            shift and go to state 31
+    q6                             shift and go to state 58
+    q7                             shift and go to state 59
+
+state 122
+
+    (10) q13 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO . q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (43) q6 -> . VAL_INT_P
+    (44) q6 -> . VAL_INT_N
+
+    VAL_INT_P       shift and go to state 49
+    VAL_INT_N       shift and go to state 50
+
+    q6                             shift and go to state 128
+
+state 123
+
+    (2) q0 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP . INIT_ESCOPO q13 FIM_ESCOPO q8
+
+    INIT_ESCOPO     shift and go to state 129
+
+
+state 124
+
+    (3) q0 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP . INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+
+    INIT_ESCOPO     shift and go to state 130
+
+
+state 125
+
+    (13) q13l -> DEC_TIPO q1 ATRIB q2 FIM_SEN q13 .
+
+    COMENT          reduce using rule 13 (q13l -> DEC_TIPO q1 ATRIB q2 FIM_SEN q13 .)
+    $end            reduce using rule 13 (q13l -> DEC_TIPO q1 ATRIB q2 FIM_SEN q13 .)
+    FIM_ESCOPO      reduce using rule 13 (q13l -> DEC_TIPO q1 ATRIB q2 FIM_SEN q13 .)
+
+
+state 126
+
+    (15) q13l -> ATRIB q10 q11 q10 FIM_SEN q13 .
+
+    COMENT          reduce using rule 15 (q13l -> ATRIB q10 q11 q10 FIM_SEN q13 .)
+    $end            reduce using rule 15 (q13l -> ATRIB q10 q11 q10 FIM_SEN q13 .)
+    FIM_ESCOPO      reduce using rule 15 (q13l -> ATRIB q10 q11 q10 FIM_SEN q13 .)
+
+
+state 127
+
+    (9) q13 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 . FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+
+    FIM_EXP         shift and go to state 131
+
+
+state 128
+
+    (10) q13 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 . FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+
+    FIM_EXP         shift and go to state 132
+
+
+state 129
+
+    (2) q0 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO . q13 FIM_ESCOPO q8
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    FIM_ESCOPO      reduce using rule 12 (q13 -> .)
+
+    q13                            shift and go to state 133
+
+state 130
+
+    (3) q0 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO . q13 FIM_ESCOPO FIM_SEN q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    FIM_ESCOPO      reduce using rule 12 (q13 -> .)
+
+    q13                            shift and go to state 134
+
+state 131
+
+    (9) q13 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP . INIT_ESCOPO q13 FIM_ESCOPO q13ll
+
+    INIT_ESCOPO     shift and go to state 135
+
+
+state 132
+
+    (10) q13 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP . INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+
+    INIT_ESCOPO     shift and go to state 136
+
+
+state 133
+
+    (2) q0 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 . FIM_ESCOPO q8
+
+    FIM_ESCOPO      shift and go to state 137
+
+
+state 134
+
+    (3) q0 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 . FIM_ESCOPO FIM_SEN q13
+
+    FIM_ESCOPO      shift and go to state 138
+
+
+state 135
+
+    (9) q13 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO . q13 FIM_ESCOPO q13ll
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    FIM_ESCOPO      reduce using rule 12 (q13 -> .)
+
+    q13                            shift and go to state 139
+
+state 136
+
+    (10) q13 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO . q13 FIM_ESCOPO FIM_SEN q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    FIM_ESCOPO      reduce using rule 12 (q13 -> .)
+
+    q13                            shift and go to state 140
+
+state 137
+
+    (2) q0 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO . q8
+    (45) q8 -> . FIM_SEN q13
+    (46) q8 -> . OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO q13
+
+    FIM_SEN         shift and go to state 41
+    OP_ELSE         shift and go to state 42
+
+    q8                             shift and go to state 141
+
+state 138
+
+    (3) q0 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO . FIM_SEN q13
+
+    FIM_SEN         shift and go to state 142
+
+
+state 139
+
+    (9) q13 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 . FIM_ESCOPO q13ll
+
+    FIM_ESCOPO      shift and go to state 143
+
+
+state 140
+
+    (10) q13 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 . FIM_ESCOPO FIM_SEN q13
+
+    FIM_ESCOPO      shift and go to state 144
+
+
+state 141
+
+    (2) q0 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q8 .
+
+    $end            reduce using rule 2 (q0 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q8 .)
+
+
+state 142
+
+    (3) q0 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN . q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    $end            reduce using rule 12 (q13 -> .)
+
+    q13                            shift and go to state 145
+
+state 143
+
+    (9) q13 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO . q13ll
+    (16) q13ll -> . FIM_SEN q13
+    (17) q13ll -> . OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+
+    FIM_SEN         shift and go to state 147
+    OP_ELSE         shift and go to state 148
+
+    q13ll                          shift and go to state 146
+
+state 144
+
+    (10) q13 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO . FIM_SEN q13
+
+    FIM_SEN         shift and go to state 149
+
+
+state 145
+
+    (3) q0 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13 .
+
+    $end            reduce using rule 3 (q0 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13 .)
+
+
+state 146
+
+    (9) q13 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll .
+
+    COMENT          reduce using rule 9 (q13 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll .)
+    $end            reduce using rule 9 (q13 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll .)
+    FIM_ESCOPO      reduce using rule 9 (q13 -> OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll .)
+
+
+state 147
+
+    (16) q13ll -> FIM_SEN . q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+  ! shift/reduce conflict for COMENT resolved as shift
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    $end            reduce using rule 12 (q13 -> .)
+    FIM_ESCOPO      reduce using rule 12 (q13 -> .)
+
+  ! COMENT          [ reduce using rule 12 (q13 -> .) ]
+
+    q13                            shift and go to state 150
+
+state 148
+
+    (17) q13ll -> OP_ELSE . INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+
+    INIT_ESCOPO     shift and go to state 151
+
+
+state 149
+
+    (10) q13 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN . q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+  ! shift/reduce conflict for COMENT resolved as shift
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    $end            reduce using rule 12 (q13 -> .)
+    FIM_ESCOPO      reduce using rule 12 (q13 -> .)
+
+  ! COMENT          [ reduce using rule 12 (q13 -> .) ]
+
+    q13                            shift and go to state 152
+
+state 150
+
+    (16) q13ll -> FIM_SEN q13 .
+
+    COMENT          reduce using rule 16 (q13ll -> FIM_SEN q13 .)
+    $end            reduce using rule 16 (q13ll -> FIM_SEN q13 .)
+    FIM_ESCOPO      reduce using rule 16 (q13ll -> FIM_SEN q13 .)
+
+
+state 151
+
+    (17) q13ll -> OP_ELSE INIT_ESCOPO . q13 FIM_ESCOPO FIM_SEN q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    FIM_ESCOPO      reduce using rule 12 (q13 -> .)
+
+    q13                            shift and go to state 153
+
+state 152
+
+    (10) q13 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13 .
+
+    COMENT          reduce using rule 10 (q13 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13 .)
+    $end            reduce using rule 10 (q13 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13 .)
+    FIM_ESCOPO      reduce using rule 10 (q13 -> LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13 .)
+
+
+state 153
+
+    (17) q13ll -> OP_ELSE INIT_ESCOPO q13 . FIM_ESCOPO FIM_SEN q13
+
+    FIM_ESCOPO      shift and go to state 154
+
+
+state 154
+
+    (17) q13ll -> OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO . FIM_SEN q13
+
+    FIM_SEN         shift and go to state 155
+
+
+state 155
+
+    (17) q13ll -> OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN . q13
+    (8) q13 -> . IDENT q13l
+    (9) q13 -> . OP_IF INIT_EXP q5 q3 q4 q5 q3 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO q13ll
+    (10) q13 -> . LACO_FOR INIT_EXP IDENT ATRIB q6 OP_TO q6 FIM_EXP INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13
+    (11) q13 -> . COMENT q12 COMENT q13
+    (12) q13 -> .
+
+  ! shift/reduce conflict for COMENT resolved as shift
+    IDENT           shift and go to state 71
+    OP_IF           shift and go to state 47
+    LACO_FOR        shift and go to state 48
+    COMENT          shift and go to state 11
+    $end            reduce using rule 12 (q13 -> .)
+    FIM_ESCOPO      reduce using rule 12 (q13 -> .)
+
+  ! COMENT          [ reduce using rule 12 (q13 -> .) ]
+
+    q13                            shift and go to state 156
+
+state 156
+
+    (17) q13ll -> OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13 .
+
+    COMENT          reduce using rule 17 (q13ll -> OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13 .)
+    $end            reduce using rule 17 (q13ll -> OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13 .)
+    FIM_ESCOPO      reduce using rule 17 (q13ll -> OP_ELSE INIT_ESCOPO q13 FIM_ESCOPO FIM_SEN q13 .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for COMENT in state 5 resolved as shift
+WARNING: shift/reduce conflict for COMENT in state 5 resolved as shift
+WARNING: shift/reduce conflict for COMENT in state 11 resolved as shift
+WARNING: shift/reduce conflict for COMENT in state 11 resolved as shift
+WARNING: shift/reduce conflict for COMENT in state 41 resolved as shift
+WARNING: shift/reduce conflict for COMENT in state 80 resolved as shift
+WARNING: shift/reduce conflict for FIM_SEN in state 95 resolved as shift
+WARNING: shift/reduce conflict for COMENT in state 100 resolved as shift
+WARNING: shift/reduce conflict for COMENT in state 102 resolved as shift
+WARNING: shift/reduce conflict for FIM_SEN in state 111 resolved as shift
+WARNING: shift/reduce conflict for COMENT in state 119 resolved as shift
+WARNING: shift/reduce conflict for COMENT in state 120 resolved as shift
+WARNING: shift/reduce conflict for COMENT in state 147 resolved as shift
+WARNING: shift/reduce conflict for COMENT in state 149 resolved as shift
+WARNING: shift/reduce conflict for COMENT in state 155 resolved as shift
+WARNING: reduce/reduce conflict in state 21 resolved using rule (q10 -> IDENT)
+WARNING: rejected rule (q12 -> IDENT) in state 21
+WARNING: reduce/reduce conflict in state 26 resolved using rule (q2 -> VAL_STR)
+WARNING: rejected rule (q3 -> VAL_STR) in state 26
+WARNING: reduce/reduce conflict in state 27 resolved using rule (q2 -> q6)
+WARNING: rejected rule (q10 -> q6) in state 27
+WARNING: reduce/reduce conflict in state 28 resolved using rule (q2 -> q7)
+WARNING: rejected rule (q10 -> q7) in state 28
+WARNING: reduce/reduce conflict in state 29 resolved using rule (q2 -> VAL_BOOL)
+WARNING: rejected rule (q3 -> VAL_BOOL) in state 29
+WARNING: reduce/reduce conflict in state 30 resolved using rule (q2 -> VAL_NULL)
+WARNING: rejected rule (q3 -> VAL_NULL) in state 30
+WARNING: Rule (q12 -> IDENT) is never reduced
